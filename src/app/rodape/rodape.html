@@ -1,0 +1,91 @@
+<section class="py-5 bg-dark-custom text-white">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+
+    <div class="mb-3 mb-md-0 text-center text-md-start">
+      <h2 class="h4 fw-bold mb-0">FIQUE POR DENTRO DE NOSSAS OFERTAS</h2>
+    </div>
+
+    <!-- email -->
+    <form class="d-flex flex-column w-100 w-md-auto" style="max-width: 300px;" (ngSubmit)="onSubmit()" #newsletterForm="ngForm">
+      <div class="input-group mb-3">
+        <!-- icon -->
+        <span class="input-group-text d-none d-md-block" id="email-addon">
+          <i class="bi bi-envelope"></i> 
+        </span>
+        
+        <input 
+          type="email" 
+          class="form-control" 
+          placeholder="E-mail" 
+          aria-label="E-mail" 
+          aria-describedby="email-addon"
+          required
+          ngModel
+          name="email">
+      </div>
+      
+      <button type="submit" class="btn btn-light w-100" [disabled]="!newsletterForm.valid">Inscreva-se</button>
+    </form>
+
+  </div>
+</section>
+
+<footer class="py-4 bg-footer-custom">
+  <div class="container">
+    <div class="row pt-4">
+
+      <div class="col-12 col-md-3 mb-4">
+        <h4 class="fw-bold">LearnOn</h4>
+        <p class="text-muted">Ensino sob demanda ao seu alcance.</p>
+        <div class="d-flex social-icons">
+          <a href="#" class="me-3 text-dark"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="me-3 text-dark"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-3 text-dark"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="me-3 text-dark"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2 mb-4">
+        <h5 class="fw-bold mb-3">EMPRESA</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted text-decoration-none">Sobre</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Trabalhos</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Carreira</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 mb-4">
+        <h5 class="fw-bold mb-3">AJUDA</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted text-decoration-none">Suporte</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Detalhes do Delivery</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Termos e condições</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Política de privacidade</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-4">
+        <h5 class="fw-bold mb-3">FAQ</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted text-decoration-none">Conta</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Pedidos</a></li>
+          <li><a href="#" class="text-muted text-decoration-none">Pagamentos</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="d-flex justify-content-between align-items-center flex-column flex-md-row pt-3">
+      <small class="text-muted mb-2 mb-md-0">DevJoy &copy; 2025. Todos os direitos reservados.</small>
+      <div class="payment-methods">
+        <i class="fab fa-cc-visa me-2 fs-4"></i>
+        <i class="fab fa-cc-mastercard me-2 fs-4"></i>
+        <i class="fab fa-cc-paypal me-2 fs-4"></i>
+        <i class="fab fa-apple-pay me-2 fs-4"></i>
+        <i class="fab fa-google-pay fs-4"></i>
+      </div>
+    </div>
+  </div>
+</footer>

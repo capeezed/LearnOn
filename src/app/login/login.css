@@ -1,0 +1,35 @@
+/* Container que centraliza tudo na vertical e horizontal */
+.login-container {
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f8f9fa !important; /* Cor de fundo da tela */
+}
+
+/* Card de login: ajuste o tamanho para não ficar muito grande */
+.login-card {
+  max-width: 450px;
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+/* Cor principal do seu projeto (azul escuro) */
+.text-custom-primary {
+  color: #2F4F4F;
+}
+
+.btn-custom {
+  background-color: #2F4F4F; /* Azul escuro principal da LearnOn */
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn-custom:hover:not([disabled]) {
+  background-color: #406868;
+  color: white;
+}
+
+/* Ajuste sutil nas bordas dos inputs */
+.form-control {
+  border-radius: 0.5rem;
+}

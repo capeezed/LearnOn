@@ -1,0 +1,65 @@
+<div class="login-container d-flex align-items-center justify-content-center bg-light">
+  <div class="card shadow-lg login-card">
+    <div class="card-body p-5">
+
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-custom-primary">Criar Conta</h2>
+        <p class="text-muted">Junte-se ao LearnOn para acessar o melhor ensino sob demanda.</p>
+      </div>
+
+      <form>
+
+        <div class="mb-3">
+          <label for="nome" class="form-label fw-bold">Nome</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome">
+          <div="invalid-feedback">
+            <div>O nome é obrigatório.</div>
+            <div>O nome deve ter no mínimo 3 caracteres.</div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="email" class="form-label fw-bold">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <div class="invalid-feedback">
+            <div>O email é obrigatório.</div>
+            <div>Formato de email inválido.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="senha" class="form-label fw-bold">Senha</label>
+          <input type="password" class="form-control" id="senha" formControlName="senha">
+          <div class="invalid-feedback">
+            <div>A senha é obrigatória.</div>
+            <div>A senha deve ter no mínimo 6 caracteres.</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="confirmacaoSenha" class="form-label fw-bold">Confirmar Senha</label>
+          <input type="password" class="form-control" id="confirmacaoSenha" formControlName="confirmacaoSenha">
+
+          <div class="invalid-feedback">
+            <div>Confirmação é obrigatória.</div>
+          </div>
+          <div>
+            As senhas não coincidem.
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-custom w-100 fw-bold py-2">
+          Cadastrar
+        </button>
+      </form>
+
+      <div class="mt-4 text-center">
+        <p class="small text-muted mb-1">Já tem conta?</p>
+        <a routerLink="/login" class="text-custom-primary fw-bold text-decoration-none">Faça login aqui</a>
+      </div>
+
+    </div>
+  </div>
+</div>

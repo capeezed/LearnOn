@@ -1,0 +1,30 @@
+
+.form-custom-bg {
+    background-color: #F5EFEB; 
+    border: none;
+    border-radius: 0.5rem; 
+    padding-top: 2rem !important; 
+    font-size: 1.05rem;
+}
+
+/* Garante que, ao focar, o Bootstrap não coloque uma borda colorida muito forte */
+.form-custom-bg:focus {
+    background-color: #f5f0e9; 
+    box-shadow: 0 0 0 0.25rem rgba(47, 79, 79, 0.25); /* Sombra sutil com a cor principal */
+}
+
+.btn-custom {
+    background-color: #2F4156; 
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+    /* Ajuste de tamanho e arredondamento */
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+    border-radius: 0.5rem;
+}
+
+.btn-custom:hover:not([disabled]) {
+    background-color: #2F4156; 
+    color: white;
+}

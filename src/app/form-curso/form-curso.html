@@ -1,0 +1,44 @@
+<section class="py-5 text-center bg-white">
+  <div class="container" style="max-width: 700px;">
+    
+    <h2 class="fw-bold mb-3">Peça seu curso personalizado!</h2>
+    <p class="text-muted mb-5 px-md-5">
+      Chega de conteúdo irrelevante! Conecte-se com mentores de alta qualificação para obter microaulas 
+      criadas exclusivamente para o seu problema. Sua solução começa aqui.
+    </p>
+
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <textarea 
+          class="form-control p-4 form-custom-bg" 
+          id="duvida" 
+          rows="6" 
+          placeholder="Informe sua dúvida"
+          formControlName="duvida"
+          [class.is-invalid]="duvida?.invalid && (duvida?.dirty || duvida?.touched)"
+          style="resize: none;"
+        ></textarea>
+        
+        <div *ngIf="duvida?.invalid && (duvida?.dirty || duvida?.touched)" class="invalid-feedback text-start">
+          <div *ngIf="duvida?.errors?.['required']">
+            Por favor, descreva sua dúvida.
+          </div>
+          <div *ngIf="duvida?.errors?.['minlength']">
+            A dúvida deve ter no mínimo 15 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn btn-custom mt-3 px-5 py-2 fw-bold" 
+        [disabled]="courseForm.invalid"
+      >
+        Enviar
+      </button>
+
+    </form>
+    
+  </div>
+</section>

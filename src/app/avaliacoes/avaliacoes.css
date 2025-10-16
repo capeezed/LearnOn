@@ -1,0 +1,47 @@
+/* Estilo para a Seção de Depoimentos */
+.testimonials-section {
+  /* Pode ser branco ou um cinza muito claro, dependendo do resto da página */
+  background-color: #f8f9fa; 
+}
+
+/* Estilo para o Card Individual */
+.testimonial-card {
+  /* Garante que o fundo do card seja branco, mesmo se a seção for cinza */
+  background-color: #ffffff; 
+  /* Adiciona uma transição suave para um efeito de mouseover (hover) */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Garante cantos arredondados sutis */
+  border-radius: 0.5rem;
+}
+
+/* Efeito sutil quando o usuário passa o mouse por cima */
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
+
+/* Estilo para as Setas de Navegação */
+.btn-arrow {
+  width: 40px; /* Largura e altura para fazer um círculo perfeito */
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Deixa o botão mais redondo */
+  border-radius: 50%;
+  /* Define a cor de borda conforme o Bootstrap, mas pode ser customizada */
+  border-color: #dee2e6;
+  color: #495057;
+}
+
+.btn-arrow:hover {
+  background-color: #e9ecef;
+}
+
+/* Estilo para o texto do depoimento */
+.card-text {
+  /* Ajusta o tamanho da fonte para manter a leitura agradável */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

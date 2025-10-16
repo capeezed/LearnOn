@@ -1,0 +1,66 @@
+<div class="login-container d-flex align-items-center justify-content-center bg-light">
+  <div class="card shadow-lg login-card">
+    <div class="card-body p-5">
+
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-custom-primary">LearnOn</h2>
+        <p class="text-muted">Entre na sua conta para acessar seus cursos.</p>
+      </div>
+
+      <div *ngIf="loginError" class="alert alert-danger">{{ loginError }}</div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="email" class="form-label fw-bold">Email</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            formControlName="email"
+            [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
+          >
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback">
+            <div *ngIf="email?.errors?.['required']">O campo Email é obrigatório.</div>
+            <div *ngIf="email?.errors?.['email']">Formato de email inválido.</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="senha" class="form-label fw-bold">Senha</label>
+          <input 
+            type="password" 
+            class="form-control" 
+            id="senha" 
+            formControlName="senha"
+            [class.is-invalid]="senha?.invalid && (senha?.dirty || senha?.touched)"
+          >
+          <div *ngIf="senha?.invalid && (senha?.dirty || senha?.touched)" class="invalid-feedback">
+            <div *ngIf="senha?.errors?.['required']">O campo Senha é obrigatório.</div>
+            <div *ngIf="senha?.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</div>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-custom w-100 fw-bold py-2" 
+          [disabled]="loginForm.invalid"
+        >
+          Entrar
+        </button>
+      </form>
+
+      <div class="mt-4 text-center">
+        <a href="/recuperar-senha" class="text-muted text-decoration-none small">Esqueceu sua senha?</a>
+      </div>
+      
+      <hr class="my-3">
+
+      <div class="text-center">
+        <p class="small text-muted mb-1">Não tem conta?</p>
+        <a href="/cadastro" class="text-custom-primary fw-bold text-decoration-none">Crie sua conta aqui</a>
+      </div>
+
+    </div>
+  </div>
+</div>
