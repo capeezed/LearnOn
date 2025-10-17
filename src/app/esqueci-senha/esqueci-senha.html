@@ -1,4 +1,4 @@
-<div class="login-container d-flex align-items-center justify-content-center bg-light">
+<div class="login-container d-flex align-items-center justify-content-center py-5">
   <div class="card shadow-lg login-card">
     <div class="card-body p-5">
 
@@ -7,13 +7,17 @@
         <p class="text-muted">Insira seu email para receber o link de redefinição.</p>
       </div>
 
-      <div class="alert alert-success"></div>
-
       <form>
 
         <div class="mb-4">
           <label for="email" class="form-label fw-bold">Email</label>
-          <input>
+          <input
+            type="email" 
+            id="email" 
+            class="form-control" 
+            placeholder="Digite seu email" 
+            required
+            >
           <div class="invalid-feedback">
             <div>O campo Email é obrigatório.</div>
             <div>Formato de email inválido.</div>
@@ -29,7 +33,7 @@
       </form>
 
       <div class="mt-4 text-center">
-        <a routerLink="/login" class="text-muted text-decoration-none small">Lembrou da senha? Voltar para Login.</a>
+        <a routerLink="/login" class="text-muted small">Lembrou da senha? Voltar para Login.</a>
       </div>
 
     </div>

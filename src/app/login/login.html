@@ -21,7 +21,7 @@
             [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
           >
           <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback">
-            <div *ngIf="email?.errors?.['required']">O campo Email é obrigatório.</div>
+            <div *ngIf="email?.errors?.['required']">O campo Email é obrigatório.</div> 
             <div *ngIf="email?.errors?.['email']">Formato de email inválido.</div>
           </div>
         </div>
@@ -51,14 +51,14 @@
       </form>
 
       <div class="mt-4 text-center">
-        <a href="/recuperar-senha" class="text-muted text-decoration-none small">Esqueceu sua senha?</a>
+        <a routerLink="/esqueci-senha" class="text-muted small">Esqueceu sua senha?</a>
       </div>
       
       <hr class="my-3">
 
       <div class="text-center">
         <p class="small text-muted mb-1">Não tem conta?</p>
-        <a href="/cadastro" class="text-custom-primary fw-bold text-decoration-none">Crie sua conta aqui</a>
+        <a routerLink="/cadastro" class="text-custom-primary fw-bold text-decoration-none">Crie sua conta aqui</a>
       </div>
 
     </div>
