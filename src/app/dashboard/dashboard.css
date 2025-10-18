@@ -7,7 +7,7 @@
 
 /* Estilo para a Sidebar */
 .sidebar {
-    background-color: #2F4F4F !important; /* Seu azul escuro customizado */
+    background-color: #2F4156 !important; /* Seu azul escuro customizado */
     padding: 0;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .list-group-item:hover, .list-group-item.active {
-    background-color: #406868 !important; /* Um tom um pouco mais claro no hover/ativo */
+    background-color: #2F4156 !important; /* Um tom um pouco mais claro no hover/ativo */
     color: white !important;
     border-radius: 0;
 }
@@ -31,9 +31,9 @@
 .logout-btn {
     position: absolute;
     bottom: 20px;
-    width: calc(100% - 40px);
+    width: 10%;
     text-align: left;
-    color: #ffc107; /* Amarelo/aviso */
+    color: #5077ca; /* Amarelo/aviso */
 }
 
 /* Cor primária para o título principal */
