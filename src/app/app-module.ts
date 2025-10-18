@@ -16,6 +16,8 @@ import { Login } from './login/login';
 import { Cadastro } from './cadastro/cadastro';
 import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
 import { Dashboard } from './dashboard/dashboard';
+import { CursosCard } from './cursos-card/cursos-card';
+import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { RedefinicaoSenha } from './redefinicao-senha/redefinicao-senha';
 
 @NgModule({
@@ -30,6 +32,8 @@ import { RedefinicaoSenha } from './redefinicao-senha/redefinicao-senha';
     Cadastro,
     EsqueciSenha,
     Dashboard,
+    CursosCard,
+    CursosPagina
     RedefinicaoSenha
   ],
   imports: [

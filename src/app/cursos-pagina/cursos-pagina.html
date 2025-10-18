@@ -1,0 +1,58 @@
+<section class="py-5">
+  <div class="container">
+    
+    <h1 class="fw-bold mb-4 text-center">Nossos Cursos</h1>
+
+    <div class="row">
+      
+      <div class="col-md-3">
+        <div class="p-3 bg-light rounded shadow-sm sticky-top" style="top: 20px;">
+          <h5 class="fw-bold mb-3">Filtrar por:</h5>
+          
+          <div class="mb-3">
+            <label class="form-label fw-bold small">Categorias</label>
+            
+            <div *ngFor="let categoria of categoriasDisponiveis" class="form-check">
+              
+
+            </div>
+
+          </div>
+          
+          <hr>
+          
+          <div class="mb-3">
+            <label class="form-label fw-bold small">Avaliação Mínima</label>
+            <select class="form-select">
+              <option value="4">4 Estrelas ou mais</option>
+              <option value="3">3 Estrelas ou mais</option>
+            </select>
+          </div>
+          
+          <button class="btn btn-custom w-100 mt-3">Aplicar Filtros</button>
+        </div>
+      </div>
+      
+      <div class="col-md-9">
+        <div class="row mb-4">
+          <div class="col">
+            <p class="text-muted">Mostrando {{ cursos.length }} resultados.</p>
+          </div>
+          <div class="col text-end">
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>Ordenar por Preço (Maior)</option>
+              <option>Ordenar por Avaliação</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+          <div *ngFor="let curso of cursos" class="col">
+            <app-cursos-card [curso]="curso"></app-cursos-card>
+          </div>
+        </div>
+        
+        </div>
+    </div>
+  </div>
+</section>
