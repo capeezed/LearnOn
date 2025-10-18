@@ -8,6 +8,8 @@ import { FormCurso } from './form-curso/form-curso';
 import { Avaliacoes } from './avaliacoes/avaliacoes';
 import { MenuSuperior } from './menu-superior/menu-superior';
 import { Rodape } from './rodape/rodape';
+import { Dashboard } from './dashboard/dashboard';
+import { authGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'avaliacoes', component: Avaliacoes },
   { path: 'menu-superior', component: MenuSuperior },
   { path: 'rodape', component: Rodape },
+  { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
   { path: '**', redirectTo: '/home' }
 ];
 

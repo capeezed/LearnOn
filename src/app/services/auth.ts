@@ -36,6 +36,30 @@ export class AuthService {
     );
   }
 
+  getUserName(): string | null {
+    const userData = localStorage.getItem('user_data');
+    if (userData) {
+        // user_data é uma string JSON, então precisamos fazer o parse
+        const user = JSON.parse(userData);
+        // Retorna o nome do objeto (salvo durante o login)
+        return user.nome || null; 
+    }
+    return null;
+  }
+
+  // ------------------------------------
+  // NOVO: Pega o tipo de usuário (aluno, especialista)
+  // ------------------------------------
+  getUserType(): string | null {
+    const userData = localStorage.getItem('user_data');
+    if (userData) {
+        const user = JSON.parse(userData);
+        // Retorna o tipo do objeto
+        return user.tipo || null; 
+        // Nota: Assumimos que o backend salva como 'tipo'
+    }
+    return null;
+  }
   // ------------------------------------
   // 3. GERENCIAMENTO DE SESSÃO
   // ------------------------------------

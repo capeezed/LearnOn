@@ -15,6 +15,7 @@ import { Avaliacoes } from './avaliacoes/avaliacoes';
 import { Login } from './login/login';
 import { Cadastro } from './cadastro/cadastro';
 import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
+import { Dashboard } from './dashboard/dashboard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
     Avaliacoes,
     Login,
     Cadastro,
-    EsqueciSenha
+    EsqueciSenha,
+    Dashboard
   ],
   imports: [
     BrowserModule,
