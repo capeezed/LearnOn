@@ -16,6 +16,8 @@ import { Login } from './login/login';
 import { Cadastro } from './cadastro/cadastro';
 import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
 import { Dashboard } from './dashboard/dashboard';
+import { CursosCard } from './cursos-card/cursos-card';
+import { CursosPagina } from './cursos-pagina/cursos-pagina';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { Dashboard } from './dashboard/dashboard';
     Login,
     Cadastro,
     EsqueciSenha,
-    Dashboard
+    Dashboard,
+    CursosCard,
+    CursosPagina
   ],
   imports: [
     BrowserModule,

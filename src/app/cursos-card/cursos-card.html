@@ -1,0 +1,27 @@
+<div class="card h-100 shadow-sm course-card">
+  <img [src]="curso.imagemURL" class="card-img-top" [alt]="curso.nome" />
+  
+  <div class="card-body d-flex flex-column">
+    
+    <h5 class="card-title fw-bold" (click)="detalhesCurso()">
+      {{ curso.nome }}
+    </h5>
+    <p class="card-subtitle mb-2 text-muted small">
+      <i class="bi bi-person-fill me-1"></i> Mentor: {{ curso.especialista }}
+    </p>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="rating-stars">
+        <i *ngFor="let star of getNota()" class="bi bi-star-fill text-warning me-1 small"></i>
+      </div>
+    </div>
+
+    <div class="mt-auto pt-3 border-top">
+        <p class="card-text price-text mb-2 fw-bold">{{ formatarPreco(curso.preco) }}</p>
+        <button class="btn btn-sm btn-custom-outline w-100">
+            Ver Opções
+        </button>
+    </div>
+
+  </div>
+</div>
