@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; // Para redirecionar após o login
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +10,15 @@ import { Router } from '@angular/router'; // Para redirecionar após o login
   styleUrl: './login.css'
 })
 export class Login implements OnInit {
+
   loginForm!: FormGroup;
   loginError: string = ''; // Mensagem para exibir erro de login
+  isLoading: boolean = false; // Indicador de carregamento
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -34,36 +38,34 @@ export class Login implements OnInit {
   }
 
   onSubmit() {
-    this.loginError = ''; // Limpa erros anteriores
+    this.loginError = ''; 
     
     if (this.loginForm.valid) {
-      const { email, senha } = this.loginForm.value;
-      
-      console.log('Tentativa de Login:', email);
+      this.isLoading = true; // Inicia o carregamento
 
-      // --- Lógica de Autenticação (Simulação) ---
+      const credentials = {
+        email: this.loginForm.value.email,
+        senha: this.loginForm.value.senha
+      };
       
-      // 1. Chamada a um Serviço de Autenticação (AuthService)
-      // this.authService.login(email, senha).subscribe(
-      //   (response) => {
-      //     // Sucesso: armazena o token e redireciona
-      //     this.router.navigate(['/dashboard']);
-      //   },
-      //   (error) => {
-      //     // Falha: exibe o erro
-      //     this.loginError = 'Email ou senha incorretos. Tente novamente.';
-      //   }
-      // );
-      
-      // Simulação de Sucesso imediato:
-      setTimeout(() => {
-         // Redireciona para o Painel de controle
-         this.router.navigate(['/dashboard']); 
-      }, 1000);
-      
-
+      this.authService.login(credentials).subscribe({
+        next: (response) => {
+          // Sucesso: O token e o usuário já foram salvos pelo AuthService.
+          // Redireciona para o painel (vamos criar a rota /dashboard depois)
+          this.router.navigate(['/dashboard']); 
+        },
+        error: (err) => {
+          // Erro: Captura a mensagem do servidor (ex: Credenciais inválidas)
+          console.error('Erro no login:', err);
+          // O backend deve retornar uma mensagem como 'Credenciais inválidas.'
+          this.loginError = err.error?.message || 'Erro ao realizar login. Tente novamente.';
+          this.isLoading = false;
+        },
+        complete: () => {
+          this.isLoading = false; // Finaliza o carregamento, mesmo em caso de erro
+        }
+      });
     } else {
-      // Marca todos os campos como "tocados" para exibir as mensagens de erro
       this.loginForm.markAllAsTouched();
     }
   }

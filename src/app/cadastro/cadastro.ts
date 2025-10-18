@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth';
 
 // Validador customizado para comparar dois campos (senha e confirmação)
 export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -17,18 +18,21 @@ export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): {
 
 @Component({
   selector: 'app-cadastro',
-  standalone: false,
-  templateUrl: './cadastro.html',
-  styleUrl: './cadastro.css'
+  templateUrl: './cadastro.html', 
+  styleUrl: './cadastro.css',
+  standalone: false
 })
-
-export class Cadastro implements OnInit {
+export class Cadastro implements OnInit { 
   
   registerForm!: FormGroup;
   registerError: string = '';
+  isLoading: boolean = false; 
 
-  constructor(private fb: FormBuilder, private router: Router) { }
-
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    private authService: AuthService // 👈 Injete o Serviço
+  ) { }
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -45,19 +49,29 @@ export class Cadastro implements OnInit {
   get confirmacaoSenha() { return this.registerForm.get('confirmacaoSenha'); }
 
 
-  onSubmit() {
+ onSubmit() {
     this.registerError = '';
     
     if (this.registerForm.valid) {
-      const { nome, email, senha } = this.registerForm.value;
+      this.isLoading = true;
+
+      const userData = this.registerForm.value; // Pega todos os campos (nome, email, senha)
       
-      console.log('Dados de Cadastro:', { nome, email, senha });
-
-      // Simulação de Sucesso:
-      alert('Cadastro realizado com sucesso! Redirecionando para login.');
-      this.router.navigate(['/login']); 
-
-      // Lógica real de AuthService.register(data).subscribe(...);
+      this.authService.register(userData).subscribe({
+        next: (response) => {
+          alert('Cadastro efetuado com sucesso! Agora faça login.');
+          this.router.navigate(['/login']); 
+        },
+        error: (err) => {
+          console.error('Erro no registro:', err);
+          this.registerError = err.error?.message || 'Erro ao tentar cadastrar. Tente novamente.';
+          this.isLoading = false;
+        },
+        complete: () => {
+          this.isLoading = false;
+        }
+      });
+      
     } else {
       this.registerForm.markAllAsTouched();
     }
