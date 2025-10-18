@@ -5,3 +5,10 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.btn-custom {
+    background-color: #2F4F4F; 
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
