@@ -78,4 +78,16 @@ export class AuthService {
     // Verifica se o token existe (e idealmente, se não expirou)
     return !!localStorage.getItem('auth_token');
   }
+
+  // Solicitação de Senha
+
+  forgotPassword(emailData: { email: string}): Observable<any> {
+    return this.http.post(`${this.apiUrl}/forgot-password`, emailData);
+  }
+
+  // Redefinição de Senha
+
+  resetPassword(resetData: { token: string, novaSenha: string}): Observable<any> {
+    return this.http.post(`${this.apiUrl}/reset-password`, resetData);
+  }
 }
