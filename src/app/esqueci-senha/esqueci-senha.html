@@ -1,4 +1,4 @@
-<div class="login-container d-flex align-items-center justify-content-center py-5">
+<div class="login-container d-flex align-items-center justify-content-center bg-light py-5">
   <div class="card shadow-lg login-card">
     <div class="card-body p-5">
 
@@ -6,8 +6,12 @@
         <h2 class="fw-bold text-custom-primary">Esqueci a Senha</h2>
         <p class="text-muted">Insira seu email para receber o link de redefinição.</p>
       </div>
+      
+      <div *ngIf="successMessage" class="alert alert-success mb-4">{{ successMessage }}</div>
+      
+      <div *ngIf="errorMessage" class="alert alert-danger mb-4">{{ errorMessage }}</div>
 
-      <form>
+      <form [formGroup]="forgotForm" (ngSubmit)="onSubmit()">
 
         <div class="mb-4">
           <label for="email" class="form-label fw-bold">Email</label>
@@ -16,19 +20,22 @@
             id="email" 
             class="form-control" 
             placeholder="Digite seu email" 
-            required
-            >
-          <div class="invalid-feedback">
-            <div>O campo Email é obrigatório.</div>
-            <div>Formato de email inválido.</div>
+            formControlName="email"
+            [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
+          >
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback">
+            <div *ngIf="email?.errors?.['required']">O campo Email é obrigatório.</div>
+            <div *ngIf="email?.errors?.['email']">Formato de email inválido.</div>
           </div>
         </div>
 
         <button 
           type="submit" 
           class="btn btn-custom w-100 fw-bold py-2" 
+          [disabled]="forgotForm.invalid || isLoading"
         >
-          Enviar Link de Recuperação
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          {{ isLoading ? 'Enviando...' : 'Enviar Link de Recuperação' }}
         </button>
       </form>
 
