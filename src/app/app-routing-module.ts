@@ -13,6 +13,7 @@ import { Rodape } from './rodape/rodape';
 import { Dashboard } from './dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
 import { RedefinicaoSenha } from './redefinicao-senha/redefinicao-senha';
+import { CursosPagina } from './cursos-pagina/cursos-pagina';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
 
   // ROTAS GERAIS E COMPONENTES DE LAYOUT (Mantidos)
+  { path: 'cursos', component: CursosPagina },
   { path: 'home', component: Home },
   { path: 'form-curso', component: FormCurso },
   { path: 'avaliacoes', component: Avaliacoes },
