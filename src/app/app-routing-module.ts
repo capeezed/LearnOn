@@ -13,6 +13,7 @@ import { Rodape } from './rodape/rodape';
 import { Dashboard } from './dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
 import { RedefinicaoSenha } from './redefinicao-senha/redefinicao-senha';
+import { CursosPagina } from './cursos-pagina/cursos-pagina';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'form-curso', component: FormCurso },
   { path: 'avaliacoes', component: Avaliacoes },
+  { path: 'cursos', component: CursosPagina},
   
   // 🚨 RECOMENDAÇÃO: Rotas de componentes de layout não devem ser acessadas diretamente
   // As rotas de MenuSuperior e Rodape foram removidas, pois são componentes de layout.

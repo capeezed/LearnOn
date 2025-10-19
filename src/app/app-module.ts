@@ -33,7 +33,7 @@ import { RedefinicaoSenha } from './redefinicao-senha/redefinicao-senha';
     EsqueciSenha,
     Dashboard,
     CursosCard,
-    CursosPagina
+    CursosPagina,
     RedefinicaoSenha
   ],
   imports: [
