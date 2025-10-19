@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth'; 
+  private apiUrl = 'https://serverlearnon.onrender.com/api/auth'; 
 
   constructor(
     private http: HttpClient, 
