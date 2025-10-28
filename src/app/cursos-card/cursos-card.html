@@ -18,8 +18,12 @@
 
     <div class="mt-auto pt-3 border-top">
         <p class="card-text price-text mb-2 fw-bold">{{ formatarPreco(curso.preco) }}</p>
-        <button class="btn btn-sm btn-custom-outline w-100">
-            Ver Opções
+        
+        <button 
+          class="btn btn-sm btn-custom w-100" 
+          (click)="addCarrinho()"
+        >
+            <i class="bi bi-cart-plus me-1"></i> Adicionar ao Carrinho
         </button>
     </div>
 

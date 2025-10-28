@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './home/home';
 import { Login } from './login/login';
 import { Cadastro} from './cadastro/cadastro';
+import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
 import { FormCurso } from './form-curso/form-curso';
 import { Avaliacoes } from './avaliacoes/avaliacoes';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login },
   { path: 'cadastro', component: Cadastro},
+  { path: 'cursos', component: CursosPagina },
   { path: 'esqueci-senha', component: EsqueciSenha },
   { path: 'form-curso', component: FormCurso },
   { path: 'avaliacoes', component: Avaliacoes },
