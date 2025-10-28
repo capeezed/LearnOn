@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://heterozygous-stephnie-oversweetly.ngrok-free.dev'; 
+  private apiUrl = 'https://heterozygous-stephnie-oversweetly.ngrok-free.dev/api/auth'; 
 
   constructor(
     private http: HttpClient, 
