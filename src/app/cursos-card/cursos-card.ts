@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { GerenciamentoCarrinho } from '../gerenciamento-carrinho';
+import { GerenciamentoCarrinho } from '../services/gerenciamento-carrinho';
 
 interface Curso{
   id: number;
