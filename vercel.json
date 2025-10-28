@@ -1,10 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "dist/LearnOn/**/*", "use": "@vercel/static" }
+    { "src": "dist/LearnOn/browser/**/*", "use": "@vercel/static" }
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "dist/LearnOn/index.html" }
+    { "src": "/(.*)", "dest": "dist/LearnOn/browser/index.html" }
   ]
 }
