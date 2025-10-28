@@ -1,0 +1,33 @@
+/* Cor Primária da LearnOn (Azul Escuro) */
+.text-custom-primary {
+    color: #2F4156 !important;
+}
+
+/* Cor de Destaque para o Fundo (Bege/Cinza Claro) */
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Cor de Acento (opcional, para dar um toque de contraste, use um tom de verde ou azul claro) */
+.text-custom-accent {
+    color: #567C8D !important; /* Exemplo: Um verde de destaque */
+}
+.border-custom-accent {
+    border-color: #567C8D !important;
+}
+
+/* Estilos de Layout */
+.row h2 {
+    font-size: 1.8rem;
+}
+
+.lead {
+    font-size: 1.15rem;
+}
+
+/* Estilo para a imagem de missão */
+.img-fluid {
+    max-height: 350px;
+    width: 100%;
+    object-fit: cover;
+}

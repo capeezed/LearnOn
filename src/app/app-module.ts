@@ -18,6 +18,8 @@ import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
 import { Dashboard } from './dashboard/dashboard';
 import { CursosCard } from './cursos-card/cursos-card';
 import { CursosPagina } from './cursos-pagina/cursos-pagina';
+import { Carrinho } from './carrinho/carrinho';
+import { SobreNos } from './sobre-nos/sobre-nos';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { CursosPagina } from './cursos-pagina/cursos-pagina';
     EsqueciSenha,
     Dashboard,
     CursosCard,
-    CursosPagina
+    CursosPagina,
+    Carrinho,
+    SobreNos
   ],
   imports: [
     BrowserModule,
