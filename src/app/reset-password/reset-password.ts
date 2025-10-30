@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
+  standalone: false,
   templateUrl: './reset-password.html',
   styleUrls: ['./reset-password.css']
 })
