@@ -15,12 +15,13 @@ interface itemsCarrinho {
 @Injectable({
   providedIn: 'root'
 })
+
 export class GerenciamentoCarrinho {
   // BehaviorSubject armazena o estado atual e emite o novo estado para observadores
   private cartItemsSubject = new BehaviorSubject<itemsCarrinho[]>([]);
   
   // Exposto como um Observable para que os componentes possam se inscrever
-  public cartItems$: Observable<itemsCarrinho[]> = this.cartItemsSubject.asObservable();
+  public carrinhoItems$: Observable<itemsCarrinho[]> = this.cartItemsSubject.asObservable();
 
   // Getter para obter o valor atual instantaneamente (se necessário)
   get currentCartItems(): itemsCarrinho[] {
@@ -57,7 +58,7 @@ export class GerenciamentoCarrinho {
    * Remove um item do carrinho.
    * @param itemId O ID do curso a ser removido.
    */
-  removeItem(itemId: number): void {
+    removerDoCarrinho(itemId: number): void {
     const currentItems = this.currentCartItems;
     
     // Filtra para criar uma nova lista sem o item removido
@@ -72,9 +73,16 @@ export class GerenciamentoCarrinho {
   /**
    * Limpa todo o carrinho.
    */
-  clearCart(): void {
-    this.cartItemsSubject.next([]);
-    console.log('Carrinho limpo.');
+  removeItem(itemId: number): void {
+    const currentItems = this.currentCartItems;
+    
+    // **A remoção correta**: Filtra para criar uma nova lista sem o item com o ID correspondente
+    const updatedItems = currentItems.filter(item => item.id !== itemId);
+    
+    // **A emissão correta**: Emite a nova lista, o que notifica o ShoppingCartComponent
+    this.cartItemsSubject.next(updatedItems);
+    
+    console.log(`Item com ID ${itemId} removido. Novo total: ${updatedItems.length}`);
   }
 
 }
