@@ -12,6 +12,7 @@
     <div>
       <a routerLink="cursos" routerLinkActive="active" class="me-5 fw-bold">Cursos</a>
       <a href="#" class="me-5 fw-bold">Ensine conosco</a>
+      <a routerLink="sobre-nos" routerLinkActive="active" class="me-5 fw-bold">Sobre Nós</a>
     </div>
 
     <form class="d-flex flex-grow-1 ms-auto me-5 position-relative">
@@ -19,8 +20,18 @@
         <input class="form-control ps-5" type="search" placeholder="Procure por cursos..." aria-label="Pesquisar cursos">
     </form>
 
-    <div>
-      <a><i class="bi bi-basket3 fs-4 me-3"></i></a>
+    <div class="d-flex align-items-center">
+
+      <button class="btn position-relative me-3 p-0" (click)="goToCart()">
+          <i class="bi bi-basket3 fs-4"></i>
+          <span 
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            *ngIf="(itemCount$ | async) as count">
+            {{ count }}
+            <span class="visually-hidden">itens no carrinho</span>
+          </span>
+      </button>
+
       <a routerLink="login" routerLinkActive="active"><i class="bi bi-person-circle fs-4"></i></a>
     </div>
 

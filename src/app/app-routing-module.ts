@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './home/home';
 import { Login } from './login/login';
 import { Cadastro} from './cadastro/cadastro';
+import { Carrinho } from './carrinho/carrinho';
 import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
 import { FormCurso } from './form-curso/form-curso';
 import { Avaliacoes } from './avaliacoes/avaliacoes';
 import { MenuSuperior } from './menu-superior/menu-superior';
+import { SobreNos } from './sobre-nos/sobre-nos';
 import { Rodape } from './rodape/rodape';
 import { Dashboard } from './dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
@@ -17,11 +19,13 @@ const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login },
   { path: 'cadastro', component: Cadastro},
+  { path: 'carrinho', component: Carrinho },
   { path: 'cursos', component: CursosPagina },
   { path: 'esqueci-senha', component: EsqueciSenha },
   { path: 'form-curso', component: FormCurso },
   { path: 'avaliacoes', component: Avaliacoes },
   { path: 'menu-superior', component: MenuSuperior },
+  { path: 'sobre-nos', component: SobreNos },
   { path: 'rodape', component: Rodape },
   { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
   { path: '**', redirectTo: '/home' }

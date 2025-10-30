@@ -19,6 +19,7 @@ import { Dashboard } from './dashboard/dashboard';
 import { CursosCard } from './cursos-card/cursos-card';
 import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { Carrinho } from './carrinho/carrinho';
+import { SobreNos } from './sobre-nos/sobre-nos';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { Carrinho } from './carrinho/carrinho';
     Dashboard,
     CursosCard,
     CursosPagina,
-    Carrinho
+    Carrinho,
+    SobreNos
   ],
   imports: [
     BrowserModule,

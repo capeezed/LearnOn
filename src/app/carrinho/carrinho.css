@@ -1,6 +1,6 @@
 /* Cor primária para títulos */
 .text-custom-primary {
-  color: #2F4F4F;
+  color: #2F4156;
 }
 
 /* Cor de destaque para preço (verde, como usado no CourseCard) */
@@ -11,12 +11,12 @@
 
 /* Estilo para o botão de ação principal */
 .btn-custom {
-  background-color: #2F4F4F;
+  background-color: #2F4156;
   color: white;
   border: none;
 }
 .btn-custom:hover:not([disabled]) {
-  background-color: #406868;
+  background-color: #567C8D;
 }
 
 /* Imagem do item no carrinho */
