@@ -39,7 +39,7 @@ import { ResetPassword } from './reset-password/reset-password';
     CursosPagina,
     Carrinho,
     SobreNos,
-    CadastroProfessor
+    CadastroProfessor,
     ResetPassword
   ],
   imports: [
