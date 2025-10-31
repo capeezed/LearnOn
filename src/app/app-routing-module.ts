@@ -14,6 +14,7 @@ import { SobreNos } from './sobre-nos/sobre-nos';
 import { Rodape } from './rodape/rodape';
 import { Dashboard } from './dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
+import { ResetPassword } from './reset-password/reset-password';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'carrinho', component: Carrinho },
   { path: 'cursos', component: CursosPagina },
   { path: 'esqueci-senha', component: EsqueciSenha },
+  { path: 'redefinir-senha/:token', component: ResetPassword},
   { path: 'form-curso', component: FormCurso },
   { path: 'avaliacoes', component: Avaliacoes },
   { path: 'menu-superior', component: MenuSuperior },

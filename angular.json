@@ -23,6 +23,8 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/LearnOn",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js",
@@ -32,7 +34,13 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "./",
+                "output": "/"
+              },
+              {
+                "glob": "_redirects",
+                "input": "./",
+                "output": "/"
               }
             ],
             "styles": [

@@ -21,6 +21,7 @@ import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { Carrinho } from './carrinho/carrinho';
 import { SobreNos } from './sobre-nos/sobre-nos';
 import { CadastroProfessor } from './cadastro-professor/cadastro-professor';
+import { ResetPassword } from './reset-password/reset-password';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CadastroProfessor } from './cadastro-professor/cadastro-professor';
     Carrinho,
     SobreNos,
     CadastroProfessor
+    ResetPassword
   ],
   imports: [
     BrowserModule,
