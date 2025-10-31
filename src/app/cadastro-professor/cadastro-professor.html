@@ -1,0 +1,120 @@
+<div class="login-container d-flex align-items-center justify-content-center bg-light py-5">
+  <div class="card shadow-lg login-card">
+    <div class="card-body p-5">
+
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-custom-primary">Criar Conta</h2>
+        <p class="text-muted">Junte-se ao LearnOn para contribuir com o melhor ensino sob demanda.</p>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="nome" class="form-label fw-bold">Nome</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome"
+            [class.is-invalid]="nome?.invalid && (nome?.dirty || nome?.touched)">
+          <div *ngIf="nome?.invalid && (nome?.dirty || nome?.touched)" class="invalid-feedback">
+            <div *ngIf="nome?.errors?.['required']">O nome é obrigatório.</div>
+            <div *ngIf="nome?.errors?.['minlength']">O nome deve ter no mínimo 3 caracteres.</div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="email" class="form-label fw-bold">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email"
+            [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)">
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback">
+            <div *ngIf="email?.errors?.['required']">O email é obrigatório.</div>
+            <div *ngIf="email?.errors?.['email']">Formato de email inválido.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="areaPrincipal" class="form-label fw-bold">Área de Especialização Principal</label>
+            <select 
+                class="form-select" 
+                id="areaPrincipal" 
+                formControlName="areaPrincipal"
+                [class.is-invalid]="areaPrincipal?.invalid && (areaPrincipal?.dirty || areaPrincipal?.touched)"
+            >
+                <option value="">Selecione sua área...</option>
+                <option *ngFor="let area of areas" [value]="area">{{ area }}</option>
+            </select>
+            <div *ngIf="areaPrincipal?.invalid && (areaPrincipal?.dirty || areaPrincipal?.touched)" class="invalid-feedback">
+                A área principal é obrigatória.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="tempoExperiencia" class="form-label fw-bold">Tempo de Experiência na Área</label>
+            <select 
+                class="form-select" 
+                id="tempoExperiencia" 
+                formControlName="tempoExperiencia"
+                [class.is-invalid]="tempoExperiencia?.invalid && (tempoExperiencia?.dirty || tempoExperiencia?.touched)"
+            >
+                <option value="">Selecione a faixa...</option>
+                <option *ngFor="let tempo of experienciaOptions" [value]="tempo">{{ tempo }}</option>
+            </select>
+            <div *ngIf="tempoExperiencia?.invalid && (tempoExperiencia?.dirty || tempoExperiencia?.touched)" class="invalid-feedback">
+                O tempo de experiência é obrigatório.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="comprovacaoDidatica" class="form-label fw-bold">Comprovação de Didática (Mín. 100 caracteres)</label>
+            <textarea 
+                class="form-control" 
+                id="comprovacaoDidatica" 
+                rows="4" 
+                formControlName="comprovacaoDidatica"
+                [class.is-invalid]="comprovacaoDidatica?.invalid && (comprovacaoDidatica?.dirty || comprovacaoDidatica?.touched)"
+                placeholder="Descreva brevemente sua experiência com ensino, mentoria, criação de conteúdo ou tutoria."
+            ></textarea>
+            <div *ngIf="comprovacaoDidatica?.invalid && (comprovacaoDidatica?.dirty || comprovacaoDidatica?.touched)" class="invalid-feedback">
+                <div *ngIf="comprovacaoDidatica?.errors?.['required']">A descrição da didática é obrigatória.</div>
+                <div *ngIf="comprovacaoDidatica?.errors?.['minlength']">Mínimo de 100 caracteres exigido.</div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="senha" class="form-label fw-bold">Senha</label>
+          <input type="password" class="form-control" id="senha" formControlName="senha"
+            [class.is-invalid]="senha?.invalid && (senha?.dirty || senha?.touched)">
+          <div *ngIf="senha?.invalid && (senha?.dirty || senha?.touched)" class="invalid-feedback">
+            <div *ngIf="senha?.errors?.['required']">A senha é obrigatória.</div>
+            <div *ngIf="senha?.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="confirmacaoSenha" class="form-label fw-bold">Confirmar Senha</label>
+          <input type="password" class="form-control" id="confirmacaoSenha" formControlName="confirmacaoSenha"
+            [class.is-invalid]="confirmacaoSenha?.invalid && (confirmacaoSenha?.dirty || confirmacaoSenha?.touched) || (registerForm.errors?.['senhasDiferentes'] && confirmacaoSenha?.touched)">
+          
+          <div *ngIf="confirmacaoSenha?.invalid && (confirmacaoSenha?.dirty || confirmacaoSenha?.touched)" class="invalid-feedback">
+             <div *ngIf="confirmacaoSenha?.errors?.['required']">Confirmação é obrigatória.</div>
+          </div>
+          
+          <div *ngIf="registerForm.errors?.['senhasDiferentes'] && confirmacaoSenha?.touched" class="invalid-feedback d-block">
+            As senhas não coincidem.
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-custom w-100 fw-bold py-2" 
+          [disabled]="registerForm.invalid"
+        >
+          Cadastrar
+        </button> 
+      </form>
+      
+      <div class="mt-4 text-center">
+        <p class="small text-muted mb-1">Já tem conta?</p>
+        <a routerLink="/login" class="text-custom-primary fw-bold text-decoration-none">Faça login aqui</a>
+      </div>
+
+    </div>
+  </div>
+</div>

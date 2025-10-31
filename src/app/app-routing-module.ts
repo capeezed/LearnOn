@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './home/home';
 import { Login } from './login/login';
 import { Cadastro} from './cadastro/cadastro';
+import { CadastroProfessor } from './cadastro-professor/cadastro-professor';
 import { Carrinho } from './carrinho/carrinho';
 import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'login', component: Login },
   { path: 'cadastro', component: Cadastro},
+  { path: 'cadastro-professor', component: CadastroProfessor },
   { path: 'carrinho', component: Carrinho },
   { path: 'cursos', component: CursosPagina },
   { path: 'esqueci-senha', component: EsqueciSenha },

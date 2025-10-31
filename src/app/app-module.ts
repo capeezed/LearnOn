@@ -20,6 +20,7 @@ import { CursosCard } from './cursos-card/cursos-card';
 import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { Carrinho } from './carrinho/carrinho';
 import { SobreNos } from './sobre-nos/sobre-nos';
+import { CadastroProfessor } from './cadastro-professor/cadastro-professor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SobreNos } from './sobre-nos/sobre-nos';
     CursosCard,
     CursosPagina,
     Carrinho,
-    SobreNos
+    SobreNos,
+    CadastroProfessor
   ],
   imports: [
     BrowserModule,
