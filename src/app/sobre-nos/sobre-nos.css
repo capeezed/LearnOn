@@ -1,0 +1,25 @@
+/* Cor Primária da LearnOn (Azul Escuro) */
+.text-custom-primary {
+    color: #2F4156 !important;
+}
+
+/* Cor de Destaque para o Fundo (Bege/Cinza Claro) */
+.bg-light {
+    background-color: #ffffff !important;
+}
+
+/* Estilos de Layout */
+.row h2 {
+    font-size: 1.8rem;
+}
+
+.lead {
+    font-size: 1.2rem;
+}
+
+/* Estilo para a imagem de missão */
+.img-fluid {
+    max-height: 350px;
+    width: 100%;
+    object-fit: cover;
+}

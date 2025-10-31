@@ -20,6 +20,7 @@ import { CursosCard } from './cursos-card/cursos-card';
 import { CursosPagina } from './cursos-pagina/cursos-pagina';
 import { Carrinho } from './carrinho/carrinho';
 import { SobreNos } from './sobre-nos/sobre-nos';
+import { CadastroProfessor } from './cadastro-professor/cadastro-professor';
 import { ResetPassword } from './reset-password/reset-password';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ResetPassword } from './reset-password/reset-password';
     CursosPagina,
     Carrinho,
     SobreNos,
+    CadastroProfessor
     ResetPassword
   ],
   imports: [
