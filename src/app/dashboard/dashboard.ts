@@ -1,7 +1,7 @@
 // src/app/dashboard/dashboard.ts
 
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth'; // Use o caminho correto
+import { AuthService } from '../services/auth.service'; // Use o caminho correto
 
 @Component({
   selector: 'app-dashboard',
