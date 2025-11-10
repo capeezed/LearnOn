@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GerenciamentoCarrinho } from '../services/gerenciamentoCarrinho'; 
+import { GerenciamentoCarrinho } from '../../services/gerenciamentoCarrinho'; 
 import { Subscription } from 'rxjs';
 
 interface itemsCarrinho {

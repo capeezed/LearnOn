@@ -1,0 +1,50 @@
+.dashboard-container {
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: #2F4156 !important;
+  padding: 0;
+}
+
+.list-group-item {
+  background-color: transparent !important;
+  color: #f8f9fa;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  transition: background-color 0.2s;
+}
+
+.list-group-item:hover, .list-group-item.active {
+  background-color: #324c63 !important;
+  color: white !important;
+  border-radius: 0;
+}
+
+.logout-btn {
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+  text-align: left;
+  color: #c0392b;
+}
+
+.text-custom-primary {
+  color: #2F4F4F;
+}
+
+.content-area {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card h5 {
+  font-weight: 500;
+  color: #666;
+}

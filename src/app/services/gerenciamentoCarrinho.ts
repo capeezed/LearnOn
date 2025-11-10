@@ -17,13 +17,11 @@ interface itemsCarrinho {
 })
 
 export class GerenciamentoCarrinho {
-  // BehaviorSubject armazena o estado atual e emite o novo estado para observadores
+
   private cartItemsSubject = new BehaviorSubject<itemsCarrinho[]>([]);
-  
-  // Exposto como um Observable para que os componentes possam se inscrever
+
   public carrinhoItems$: Observable<itemsCarrinho[]> = this.cartItemsSubject.asObservable();
 
-  // Getter para obter o valor atual instantaneamente (se necessário)
   get currentCartItems(): itemsCarrinho[] {
     return this.cartItemsSubject.value;
   }
@@ -32,7 +30,7 @@ export class GerenciamentoCarrinho {
 
   /**
    * Adiciona um curso ao carrinho.
-   * @param item O objeto do curso a ser adicionado.
+   * @param item 
    */
   addCarrinho(item: itemsCarrinho): void {
     const currentItems = this.currentCartItems;

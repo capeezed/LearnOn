@@ -2,13 +2,18 @@
   <div class="card shadow-lg login-card">
     <div class="card-body p-5">
 
+      <!-- Título e Descrição -->
       <div class="text-center mb-4">
         <h2 class="fw-bold text-custom-primary">Criar Conta</h2>
         <p class="text-muted">Junte-se ao LearnOn para contribuir com o melhor ensino sob demanda.</p>
       </div>
 
+      <!-- Mensagem de Erro Geral -->
+      <div *ngIf="registerError" class="alert alert-danger py-2">{{ registerError }}</div>
+
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
+        <!-- NOME E EMAIL -->
         <div class="mb-3">
           <label for="nome" class="form-label fw-bold">Nome</label>
           <input type="text" class="form-control" id="nome" formControlName="nome"
@@ -29,6 +34,7 @@
           </div>
         </div>
 
+        <!-- ÁREA DE ESPECIALIZAÇÃO (usa *ngFor da lista 'areas') -->
         <div class="mb-3">
             <label for="areaPrincipal" class="form-label fw-bold">Área de Especialização Principal</label>
             <select 
@@ -45,6 +51,7 @@
             </div>
         </div>
 
+        <!-- TEMPO DE EXPERIÊNCIA (usa *ngFor da lista 'experienciaOptions') -->
         <div class="mb-3">
             <label for="tempoExperiencia" class="form-label fw-bold">Tempo de Experiência na Área</label>
             <select 
@@ -61,6 +68,7 @@
             </div>
         </div>
 
+        <!-- COMPROVAÇÃO DE DIDÁTICA (textarea) -->
         <div class="mb-3">
             <label for="comprovacaoDidatica" class="form-label fw-bold">Comprovação de Didática (Mín. 100 caracteres)</label>
             <textarea 
@@ -77,6 +85,7 @@
             </div>
         </div>
 
+        <!-- SENHA -->
         <div class="mb-3">
           <label for="senha" class="form-label fw-bold">Senha</label>
           <input type="password" class="form-control" id="senha" formControlName="senha"
@@ -87,29 +96,34 @@
           </div>
         </div>
 
+        <!-- CONFIRMAR SENHA -->
         <div class="mb-4">
           <label for="confirmacaoSenha" class="form-label fw-bold">Confirmar Senha</label>
           <input type="password" class="form-control" id="confirmacaoSenha" formControlName="confirmacaoSenha"
             [class.is-invalid]="confirmacaoSenha?.invalid && (confirmacaoSenha?.dirty || confirmacaoSenha?.touched) || (registerForm.errors?.['senhasDiferentes'] && confirmacaoSenha?.touched)">
           
           <div *ngIf="confirmacaoSenha?.invalid && (confirmacaoSenha?.dirty || confirmacaoSenha?.touched)" class="invalid-feedback">
-             <div *ngIf="confirmacaoSenha?.errors?.['required']">Confirmação é obrigatória.</div>
+            <div *ngIf="confirmacaoSenha?.errors?.['required']">Confirmação é obrigatória.</div>
           </div>
           
+          <!-- Mensagem de match de senha (aplicada no nível do FormGroup) -->
           <div *ngIf="registerForm.errors?.['senhasDiferentes'] && confirmacaoSenha?.touched" class="invalid-feedback d-block">
             As senhas não coincidem.
           </div>
         </div>
 
+        <!-- BOTÃO SUBMIT -->
         <button 
           type="submit" 
           class="btn btn-custom w-100 fw-bold py-2" 
-          [disabled]="registerForm.invalid"
+          [disabled]="registerForm.invalid || isLoading"
         >
-          Cadastrar
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          {{ isLoading ? 'Cadastrando...' : 'Cadastrar' }}
         </button> 
       </form>
       
+      <!-- Link para Login -->
       <div class="mt-4 text-center">
         <p class="small text-muted mb-1">Já tem conta?</p>
         <a routerLink="/login" class="text-custom-primary fw-bold text-decoration-none">Faça login aqui</a>

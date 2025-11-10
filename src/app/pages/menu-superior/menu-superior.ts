@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GerenciamentoCarrinho } from '../services/gerenciamentoCarrinho'; // Importe o serviço
+import { GerenciamentoCarrinho } from '../../services/gerenciamentoCarrinho'; // Importe o serviço
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router'; // Para navegação
