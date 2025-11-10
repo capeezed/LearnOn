@@ -8,7 +8,6 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  // A URL ngrok é volátil; idealmente, em produção, use a URL do Render.
   private apiUrl = 'https://heterozygous-stephnie-oversweetly.ngrok-free.dev/api/auth'; 
 
   constructor(
@@ -20,7 +19,6 @@ export class AuthService {
   // 1. REGISTRO DE ALUNO (POST /api/auth/register)
   // ------------------------------------
   register(userData: any): Observable<any> {
-    // Rota de registro padrão (para Aluno)
     return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
@@ -28,7 +26,6 @@ export class AuthService {
   // 2. REGISTRO DE PROFESSOR (POST /api/auth/register-professor)
   // ------------------------------------
   registerProfessor(professorData: any): Observable<any> {
-    // Rota específica que o seu backend espera para o professor
     const url = `${this.apiUrl}/register-professor`; 
     return this.http.post<any>(url, professorData);
   }
@@ -39,7 +36,6 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
       tap(response => {
-        // Se o login for sucesso, o backend retorna token e dados do usuário (incluindo o tipo)
         this.setSession(response.token, response.user);
       })
     );

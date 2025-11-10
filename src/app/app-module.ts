@@ -7,21 +7,22 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { NgbModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { Home } from './home/home';
-import { MenuSuperior } from './menu-superior/menu-superior';
-import { Rodape } from './rodape/rodape';
-import { FormCurso } from './form-curso/form-curso';
-import { Avaliacoes } from './avaliacoes/avaliacoes';
-import { Login } from './login/login';
-import { Cadastro } from './cadastro/cadastro';
-import { EsqueciSenha } from './esqueci-senha/esqueci-senha';
-import { Dashboard } from './dashboard/dashboard';
-import { CursosCard } from './cursos-card/cursos-card';
-import { CursosPagina } from './cursos-pagina/cursos-pagina';
-import { Carrinho } from './carrinho/carrinho';
-import { SobreNos } from './sobre-nos/sobre-nos';
-import { CadastroProfessor } from './cadastro-professor/cadastro-professor';
-import { ResetPassword } from './reset-password/reset-password';
+import { Home } from './pages/home/home';
+import { MenuSuperior } from './pages/menu-superior/menu-superior';
+import { Rodape } from './pages/rodape/rodape';
+import { FormCurso } from './pages/form-curso/form-curso';
+import { Avaliacoes } from './pages/avaliacoes/avaliacoes';
+import { Login } from './pages/login/login';
+import { Cadastro } from './pages/cadastro/cadastro';
+import { EsqueciSenha } from './pages/esqueci-senha/esqueci-senha';
+import { Dashboard } from './pages/dashboard/dashboard';
+import { CursosCard } from './pages/cursos-card/cursos-card';
+import { CursosPagina } from './pages/cursos-pagina/cursos-pagina';
+import { Carrinho } from './pages/carrinho/carrinho';
+import { SobreNos } from './pages/sobre-nos/sobre-nos';
+import { CadastroProfessor } from './pages/cadastro-professor/cadastro-professor';
+import { ResetPassword } from './pages/reset-password/reset-password';
+import { DashboardProfessor } from './pages/dashboard-professor/dashboard-professor';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ResetPassword } from './reset-password/reset-password';
     Carrinho,
     SobreNos,
     CadastroProfessor,
-    ResetPassword
+    ResetPassword,
+    DashboardProfessor
   ],
   imports: [
     BrowserModule,

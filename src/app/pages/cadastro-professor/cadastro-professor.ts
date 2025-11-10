@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { passwordMatchValidator } from '../shared/validators/custom-validators'; // Importa o validador reutilizável
+import { AuthService } from '../../services/auth.service';
+import { passwordMatchValidator } from '../../shared/validators/custom-validators'; // Importa o validador reutilizável
 
 @Component({
   selector: 'app-cadastro-professor',
