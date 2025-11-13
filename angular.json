@@ -25,7 +25,7 @@
           "options": {
             "outputMode": "static",
             "outputPath": "dist/LearnOn",
-            "index": "index.html",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js",
