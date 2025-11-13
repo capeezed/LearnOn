@@ -26,18 +26,13 @@ export class SobreNos {
     {
       nome: 'Gabriel Capelini de Oliveira',
       cargo: ['Dev Back-End', 'Analista de Viabilidade', 'Especialista em Deploy'],
-      imageUrl: 'assets/cap.jpg',
+      imageUrl: 'assets/gabriel.jpg',
       linkedinUrl: 'https://linkedin.com/in/...',
       githubUrl: 'https://github.com/capeezed'
     },
     {
       nome: 'Julia Moraes Martins',
-      cargo: [
-        'Designer',
-        'Analista de Requisitos',
-        'Product Owner',
-        'Consultora de Usabilidade'
-      ],
+      cargo: ['Designer', 'Analista de Requisitos', 'Product Owner', 'Consultora de Usabilidade'],
       imageUrl: 'assets/img/team/membro3.png',
       linkedinUrl: 'https://www.linkedin.com/in/julia-moraes-m',
       githubUrl: 'https://github.com/JuliaMoraesM'
