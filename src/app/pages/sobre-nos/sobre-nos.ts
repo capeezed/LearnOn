@@ -10,12 +10,10 @@ interface MembrosEquipe {
 
 @Component({
   selector: 'app-sobre-nos',
-  standalone: false,
   templateUrl: './sobre-nos.html',
-  styleUrl: './sobre-nos.css'
+  styleUrls: ['./sobre-nos.css']
 })
 export class SobreNos {
-
   membrosEquipe: MembrosEquipe[] = [
     {
       nome: 'Danielle Namie Yoshimura',
@@ -33,7 +31,12 @@ export class SobreNos {
     },
     {
       nome: 'Julia Moraes Martins',
-      cargo: ['Designer', 'Analista de Requisitos', 'Product Owner', 'Consultora de Usabilidade'],
+      cargo: [
+        'Designer',
+        'Analista de Requisitos',
+        'Product Owner',
+        'Consultora de Usabilidade'
+      ],
       imageUrl: 'assets/img/team/membro3.png',
       linkedinUrl: 'https://www.linkedin.com/in/julia-moraes-m',
       githubUrl: 'https://github.com/JuliaMoraesM'
@@ -46,5 +49,4 @@ export class SobreNos {
       githubUrl: 'https://github.com/yukari4u'
     }
   ];
-
 }
