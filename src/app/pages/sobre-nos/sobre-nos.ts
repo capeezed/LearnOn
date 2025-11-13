@@ -33,14 +33,14 @@ export class SobreNos {
     {
       nome: 'Julia Moraes Martins',
       cargo: ['Designer', 'Analista de Requisitos', 'Product Owner', 'Consultora de Usabilidade'],
-      imageUrl: 'assets/img/team/membro3.png',
+      imageUrl: 'assets/juju.jpg',
       linkedinUrl: 'https://www.linkedin.com/in/julia-moraes-m',
       githubUrl: 'https://github.com/JuliaMoraesM'
     },
     {
       nome: 'Melissa Yukari Kato',
       cargo: ['Dev Front-End', 'Engenheira de Testes', 'Analista de Suporte'],
-      imageUrl: 'assets/img/team/membro4.png',
+      imageUrl: 'assets/mel.jpg',
       linkedinUrl: 'https://linkedin.com/in/...',
       githubUrl: 'https://github.com/yukari4u'
     }
