@@ -23,8 +23,9 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputMode": "static",
             "outputPath": "dist/LearnOn",
-            "index": "src/index.html",
+            "index": "index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js",
@@ -32,16 +33,9 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "./",
-                "output": "/"
-              },
-              {
-                "glob": "_redirects",
-                "input": "./",
-                "output": "/"
-              }
+              "src/assets",
+              "src/favicon.ico",
+              "src/_redirects"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -98,10 +92,8 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.css"
