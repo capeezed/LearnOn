@@ -29,21 +29,21 @@ export class SobreNos {
       cargo: ['Dev Back-End', 'Analista de Viabilidade', 'Especialista em Deploy'],
       imageUrl: 'assets/img/team/membro2.png',
       linkedinUrl: 'https://linkedin.com/in/...',
-      githubUrl: 'https://github.com/...'
+      githubUrl: 'https://github.com/capeezed'
     },
     {
       nome: 'Julia Moraes Martins',
       cargo: ['Designer', 'Analista de Requisitos', 'Product Owner', 'Consultora de Usabilidade'],
       imageUrl: 'assets/img/team/membro3.png',
-      linkedinUrl: 'https://linkedin.com/in/...',
-      githubUrl: 'https://github.com/...'
+      linkedinUrl: 'https://www.linkedin.com/in/julia-moraes-m',
+      githubUrl: 'https://github.com/JuliaMoraesM'
     },
     {
-      nome: 'Nome Membro 4 (4 Roles)',
+      nome: 'Melissa Yukari Kato',
       cargo: ['Dev Front-End', 'Engenheira de Testes', 'Analista de Suporte'],
       imageUrl: 'assets/img/team/membro4.png',
       linkedinUrl: 'https://linkedin.com/in/...',
-      githubUrl: 'https://github.com/...'
+      githubUrl: 'https://github.com/yukari4u'
     }
   ];
 
