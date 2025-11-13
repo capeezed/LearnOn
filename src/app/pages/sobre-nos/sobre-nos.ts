@@ -10,6 +10,7 @@ interface MembrosEquipe {
 
 @Component({
   selector: 'app-sobre-nos',
+  standalone: false,
   templateUrl: './sobre-nos.html',
   styleUrls: ['./sobre-nos.css']
 })
