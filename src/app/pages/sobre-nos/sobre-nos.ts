@@ -19,14 +19,14 @@ export class SobreNos {
     {
       nome: 'Danielle Namie Yoshimura',
       cargo: ['Gestor do Projeto', 'Scrum Master', 'Analista de BI'],
-      imageUrl: '/public/assets/dani.jpg',
+      imageUrl: 'assets/dani.jpg',
       linkedinUrl: 'https://www.linkedin.com/in/danielle-yoshimura',
       githubUrl: 'https://github.com/DanielleNamie'
     },
     {
       nome: 'Gabriel Capelini de Oliveira',
       cargo: ['Dev Back-End', 'Analista de Viabilidade', 'Especialista em Deploy'],
-      imageUrl: '/public/assets/cap.jpg',
+      imageUrl: 'assets/cap.jpg',
       linkedinUrl: 'https://linkedin.com/in/...',
       githubUrl: 'https://github.com/capeezed'
     },
