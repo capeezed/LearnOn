@@ -27,7 +27,7 @@ export class SobreNos {
     {
       nome: 'Gabriel Capelini de Oliveira',
       cargo: ['Dev Back-End', 'Analista de Viabilidade', 'Especialista em Deploy'],
-      imageUrl: 'assets/img/team/membro2.png',
+      imageUrl: '/public/assets/cap.jpg',
       linkedinUrl: 'https://linkedin.com/in/...',
       githubUrl: 'https://github.com/capeezed'
     },
