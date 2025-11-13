@@ -1,25 +1,65 @@
-/* Cor Primária da LearnOn (Azul Escuro) */
-.text-custom-primary {
-    color: #2F4156 !important;
+.section-title {
+  color: #2F4F4F;
 }
 
-/* Cor de Destaque para o Fundo (Bege/Cinza Claro) */
+.story-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.team-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.team-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid #f0f0f0;
+}
+
+.roles-list {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  width: 100%;
+  flex-grow: 1; 
+}
+
+.role-item {
+  margin-bottom: 0.25rem;
+  font-style: italic; 
+}
+
+.social-links a {
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: #2F4F4F;
+}
+
 .bg-light {
-    background-color: #ffffff !important;
+  background-color: #f8f9fa !important;
 }
 
-/* Estilos de Layout */
-.row h2 {
-    font-size: 1.8rem;
-}
-
-.lead {
-    font-size: 1.2rem;
-}
-
-/* Estilo para a imagem de missão */
-.img-fluid {
-    max-height: 350px;
-    width: 100%;
-    object-fit: cover;
+.social-links {
+  margin-top: auto; 
+  padding-top: 1rem;
 }
