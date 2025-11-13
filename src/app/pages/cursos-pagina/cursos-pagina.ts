@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class CursosPagina implements OnInit {
   //Array de dados simulados (pode ser substituído por dados reais (API))
   readonly todosCursos = [
-    { id: 1, nome: 'Introdução ao Docker e Containers', especialista: 'Dani Namie', nota: 5, preco: 9.90, imagemURL:'/public/assets/docker.jpg', categoria: 'Programação' },
-    { id: 2, nome: 'Como fazer CupCake', especialista: 'Juju Moraes', nota: 3, preco: 5.50, imagemURL:'/public/assets/cupcake.jpg', categoria: 'Culinária' },
-    { id: 3, nome: 'Decoração temática de Jujutsu Kaisen', especialista: 'Mel Kato', nota: 2, preco: 10, imagemURL:'/public/assets/decoração jujutsu.jpg', categoria: 'Decoração' },
-    { id: 4, nome: 'Como desenhar uma lua', especialista: 'Gabriel Capelini', nota: 4, preco: 9.90, imagemURL:'/public/assets/lua desenho.jpg', categoria: 'Artes' },
-    { id: 5, nome: 'Aprenda a fazer yoga', especialista: 'Lua', nota: 4, preco: 15.50, imagemURL:'/public/assets/yoga.jpg', categoria: 'Saúde' },
+    { id: 1, nome: 'Introdução ao Docker e Containers', especialista: 'Dani Namie', nota: 5, preco: 9.90, imagemURL:'assets/docker.jpg', categoria: 'Programação' },
+    { id: 2, nome: 'Como fazer CupCake', especialista: 'Juju Moraes', nota: 3, preco: 5.50, imagemURL:'assets/cupcake.jpg', categoria: 'Culinária' },
+    { id: 3, nome: 'Decoração temática de Jujutsu Kaisen', especialista: 'Mel Kato', nota: 2, preco: 10, imagemURL:'assets/decoração jujutsu.jpg', categoria: 'Decoração' },
+    { id: 4, nome: 'Como desenhar uma lua', especialista: 'Gabriel Capelini', nota: 4, preco: 9.90, imagemURL:'assets/lua desenho.jpg', categoria: 'Artes' },
+    { id: 5, nome: 'Aprenda a fazer yoga', especialista: 'Lua', nota: 4, preco: 15.50, imagemURL:'assets/yoga.jpg', categoria: 'Saúde' },
   ]
 
   // Array que será exibido no *ngFor
