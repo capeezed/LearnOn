@@ -21,8 +21,8 @@ export class SobreNos {
       nome: 'Danielle Namie Yoshimura',
       cargo: ['Gestor do Projeto', 'Scrum Master', 'Analista de BI'],
       imageUrl: 'assets/img/team/membro1.png',
-      linkedinUrl: 'https://linkedin.com/in/...',
-      githubUrl: 'https://github.com/...'
+      linkedinUrl: 'https://www.linkedin.com/in/danielle-yoshimura',
+      githubUrl: 'https://github.com/DanielleNamie'
     },
     {
       nome: 'Gabriel Capelini de Oliveira',
