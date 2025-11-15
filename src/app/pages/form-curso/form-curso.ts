@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PedidoService } from '../../services/pedido';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-form-curso',
@@ -8,53 +11,49 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './form-curso.css'
 })
 export class FormCurso implements OnInit {
-// Declaração do FormGroup que irá controlar o formulário
-  courseForm!: FormGroup;
+  pedidoForm!: FormGroup;
+  isLoading: boolean = false;
 
-  // Injetamos o FormBuilder no construtor
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private pedidoService: PedidoService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    // 1. Inicializa o formulário e define os controles (campos) e suas validações
-    this.courseForm = this.fb.group({
+    this.pedidoForm = this.fb.group({
       duvida: ['', [
-        Validators.required,        // O campo não pode estar vazio
-        Validators.minLength(25)    // A dúvida deve ter no mínimo 25 caracteres para ser detalhada
+        Validators.required,
+        Validators.minLength(25)
       ]]
-      // Você poderia adicionar mais campos aqui, como 'email' ou 'nome'
     });
   }
 
-  // 2. Getter para facilitar o acesso ao controle 'duvida' no HTML
   get duvida() {
-    return this.courseForm.get('duvida');
+    return this.pedidoForm.get('duvida');
   }
 
-  // 3. Método chamado quando o usuário clica no botão "Enviar"
   onSubmit() {
-    // Verifica se todos os campos preenchidos satisfazem as validações
-    if (this.courseForm.valid) {
-      const duvida = this.courseForm.value.duvida;
-      
-      console.log('Dados do Pedido Enviado:', duvida);
+    if (this.pedidoForm.valid) {
+      this.isLoading = true;
+      const pedidoData = {
+        duvida: this.pedidoForm.value.duvida,
+        solicitante_email: this.authService.getUserName?.() || undefined
+      };
 
-      // --- SIMULAÇÃO DE ENVIO PARA O BACKEND ---
-      // Idealmente, você chamaria um Service Angular para enviar os dados
-      // this.courseService.sendRequest(this.courseForm.value).subscribe(response => {
-      //     // Lógica de sucesso, redirecionar para a tela de confirmação
-      //     this.router.navigate(['/pedido-confirmado']); 
-      // });
-      
-      // Mensagem de sucesso (apenas para teste)
-      alert('Sua dúvida foi enviada! Nossos especialistas já estão em análise.');
-      
-      // Limpa o formulário após o envio
-      this.courseForm.reset();
+      this.pedidoService.criarPedido(pedidoData).subscribe({
+        next: () => {
+          alert('Seu pedido foi enviado! Nossos especialistas já estão analisando.');
+          this.pedidoForm.reset();
+          this.isLoading = false;
+        },
+        error: () => {
+          alert('Erro ao enviar pedido, tente novamente.');
+          this.isLoading = false;
+        }
+      });
     } else {
-      // Se o formulário for inválido (por exemplo, texto muito curto)
-      console.error('Formulário inválido. Verifique os campos.');
-      // Opcional: Forçar a exibição dos erros para o usuário
-      this.courseForm.markAllAsTouched();
+      this.pedidoForm.markAllAsTouched();
     }
   }
 }

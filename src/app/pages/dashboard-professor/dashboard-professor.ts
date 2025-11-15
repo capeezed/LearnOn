@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { fromReadableStreamLike } from 'rxjs/internal/observable/innerFrom';
+import { PedidoService } from '../../services/pedido';
 
 interface Aula {
   titulo: string;
@@ -21,22 +21,32 @@ export class DashboardProfessor implements OnInit {
   aulasHoje = 0;
   alunosAtivos = 0;
   cursosCriados = 0;
-
   proximasAulas: Aula[] = [];
 
-  constructor(private authService: AuthService) {}
+  pedidosPendentes: any[] = [];
+
+  constructor(private authService: AuthService, private pedidoService: PedidoService) {}
 
   ngOnInit(): void {
     this.userName = this.authService.getUserName();
 
+    // MOCKS (mantenha os seus)
     this.aulasHoje = 2;
     this.alunosAtivos = 12;
     this.cursosCriados = 3;
-
     this.proximasAulas = [
       { titulo: 'Matemática Avançada', data: '11/11', hora: '10:00', aluno: 'Lucas M.' },
       { titulo: 'Introdução à Física', data: '11/11', hora: '15:30', aluno: 'Ana R.' },
     ];
+
+    // Pedidos de microaula do sistema (carregados do backend)
+    this.pedidoService.getPedidosPendentes().subscribe({
+      next: (pedidos) => this.pedidosPendentes = pedidos,
+      error: () => {
+        // Opcional: Mensagem de erro, logs etc.
+        this.pedidosPendentes = [];
+      }
+    });
   }
 
   abrirCriarCurso() {

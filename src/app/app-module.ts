@@ -44,6 +44,7 @@ import { DashboardProfessor } from './pages/dashboard-professor/dashboard-profes
     ResetPassword,
     DashboardProfessor,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
