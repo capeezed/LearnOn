@@ -15,67 +15,69 @@ export class AuthService {
     private router: Router
   ) { }
 
-  // ------------------------------------
-  // 1. REGISTRO DE ALUNO (POST /api/auth/register)
-  // ------------------------------------
+  // REGISTRO DE ALUNO
   register(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, userData);
   }
 
-  // ------------------------------------
-  // 2. REGISTRO DE PROFESSOR (POST /api/auth/register-professor)
-  // ------------------------------------
+  // REGISTRO DE PROFESSOR
   registerProfessor(professorData: any): Observable<any> {
     const url = `${this.apiUrl}/register-professor`; 
     return this.http.post<any>(url, professorData);
   }
 
-  // ------------------------------------
-  // 3. LOGIN (POST /api/auth/login)
-  // ------------------------------------
+  // LOGIN
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
       tap(response => {
+        // Grava na sessão as informações do usuário (token + objeto user)
         this.setSession(response.token, response.user);
       })
     );
   }
 
-  // ------------------------------------
-  // 4. GETTERS DE DADOS DO USUÁRIO
-  // ------------------------------------
+  // PEGAR O NOME DO USUÁRIO
   getUserName(): string | null {
     const userData = localStorage.getItem('user_data');
     if (userData) {
+      try {
         const user = JSON.parse(userData);
-        return user.nome || null; 
+        return user.nome || null;
+      } catch {
+        return null;
+      }
     }
     return null;
   }
 
+  // PEGAR O TIPO DO USUÁRIO (aluno, professor, etc)
   getUserType(): string | null {
     const userData = localStorage.getItem('user_data');
     if (userData) {
+      try {
         const user = JSON.parse(userData);
-        return user.tipo || null; 
+        return user.tipo || null;
+      } catch {
+        return null;
+      }
     }
     return null;
   }
   
-  // ------------------------------------
-  // 5. GERENCIAMENTO DE SESSÃO
-  // ------------------------------------
+  // GERENCIAMENTO DE SESSÃO
   private setSession(token: string, user: any) {
     localStorage.setItem('auth_token', token);
     localStorage.setItem('user_data', JSON.stringify(user));
   }
 
-  logout() {
+  // LOGOUT
+  logout(): void {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user_data');
     this.router.navigate(['/login']);
   }
 
+  // ESTÁ LOGADO?
   isLoggedIn(): boolean {
     return !!localStorage.getItem('auth_token');
   }

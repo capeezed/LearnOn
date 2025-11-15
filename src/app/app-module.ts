@@ -42,7 +42,7 @@ import { DashboardProfessor } from './pages/dashboard-professor/dashboard-profes
     SobreNos,
     CadastroProfessor,
     ResetPassword,
-    DashboardProfessor
+    DashboardProfessor,
   ],
   imports: [
     BrowserModule,

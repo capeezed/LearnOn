@@ -15,12 +15,8 @@ export const authGuard: CanActivateFn = (route, state) => {
     // Usuário está logado: Permite o acesso à rota
     return true;
   } else {
-    // Usuário NÃO está logado:
-    // Exibe mensagem no console e redireciona para a página de login
+
     console.warn('Acesso negado: Usuário não autenticado.');
-    
-    // Redireciona para a página de login
-    // Usamos o UrlTree para redirecionar programaticamente
     return router.createUrlTree(['/login']);
   }
 };

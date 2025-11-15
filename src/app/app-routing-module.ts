@@ -16,6 +16,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
 import { ResetPassword } from './pages/reset-password/reset-password';
 import { DashboardProfessor } from './pages/dashboard-professor/dashboard-professor'
+import { profGuard } from './guards/prof-guard.ts-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: 'sobre-nos', component: SobreNos },
   { path: 'rodape', component: Rodape },
   { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
-  { path: 'dashboard-professor', component: DashboardProfessor},
+  { path: 'dashboard-professor', component: DashboardProfessor, canActivate: [profGuard]},
   { path: '**', redirectTo: '/home' }
 ];
 

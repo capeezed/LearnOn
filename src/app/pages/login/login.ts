@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service'; // Use o caminho correto
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service'; // Use o caminho corr
   styleUrls: ['./login.css']
 })
 export class Login implements OnInit {
-  
+
   loginForm!: FormGroup;
   loginError: string = '';
   isLoading: boolean = false; 
@@ -28,7 +28,6 @@ export class Login implements OnInit {
     });
   }
 
-  // Getters para fácil acesso no HTML
   get email() { return this.loginForm.get('email'); }
   get senha() { return this.loginForm.get('senha'); }
 
@@ -45,11 +44,19 @@ export class Login implements OnInit {
       
       this.authService.login(credentials).subscribe({
         next: (response) => {
-          this.router.navigate(['/dashboard']); 
+          const userType = this.authService.getUserType();
+          if (userType === 'professor') {
+            this.router.navigate(['/dashboard-professor']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
         },
         error: (err) => {
-          console.error('Erro no login:', err);
-          this.loginError = err.error?.message || 'Erro ao realizar login. Verifique as credenciais.';
+          if (err.status === 403) {
+            this.loginError = err.error?.message || 'Sua conta está aguardando aprovação.';
+          } else {
+            this.loginError = err.error?.message || 'Erro ao realizar login. Verifique as credenciais.';
+          }
           this.isLoading = false;
         },
         complete: () => {

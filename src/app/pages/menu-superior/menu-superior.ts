@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GerenciamentoCarrinho } from '../../services/gerenciamentoCarrinho'; // Importe o serviço
+import { GerenciamentoCarrinho } from '../../services/gerenciamentoCarrinho';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router'; // Para navegação
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu-superior',
@@ -10,24 +11,35 @@ import { Router } from '@angular/router'; // Para navegação
   templateUrl: './menu-superior.html',
   styleUrl: './menu-superior.css'
 })
-export class MenuSuperior implements OnInit{
-  // Observable que rastreia a contagem de itens
+export class MenuSuperior implements OnInit {
   itemCount$!: Observable<number>;
 
   constructor(
-    private GerenciamentoCarrinho : GerenciamentoCarrinho, // 1. Injeta o CartService
-    private router: Router
-  ) { }
+    private GerenciamentoCarrinho: GerenciamentoCarrinho,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    // 2. Transforma o Observable da lista de itens em um Observable da contagem
     this.itemCount$ = this.GerenciamentoCarrinho.carrinhoItems$.pipe(
-      map(items => items.length) // Mapeia o array para o número de elementos
+      map(items => items.length)
     );
   }
 
-  // 3. Função para navegar para a página do carrinho
   goToCart(): void {
     this.router.navigate(['/carrinho']);
+  }
+
+  goToDashboard(): void {
+    if (this.authService.isLoggedIn()) {
+      const userType = this.authService.getUserType();
+      if (userType === 'professor') {
+        this.router.navigate(['/dashboard-professor']);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }
