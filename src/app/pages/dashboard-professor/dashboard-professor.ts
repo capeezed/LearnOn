@@ -41,12 +41,14 @@ export class DashboardProfessor implements OnInit {
 
     // Pedidos de microaula do sistema (carregados do backend)
     this.pedidoService.getPedidosPendentes().subscribe({
-      next: (pedidos) => this.pedidosPendentes = pedidos,
-      error: () => {
-        // Opcional: Mensagem de erro, logs etc.
-        this.pedidosPendentes = [];
-      }
-    });
+    next: (pedidos) => {
+      this.pedidosPendentes = pedidos;
+      console.log('DEBUG pedidos:', pedidos); // <-- ADICIONE!
+    },
+    error: () => {
+      this.pedidosPendentes = [];
+    }
+  });
   }
 
   abrirCriarCurso() {
