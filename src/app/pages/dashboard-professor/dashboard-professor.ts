@@ -28,6 +28,7 @@ export class DashboardProfessor implements OnInit {
   constructor(private authService: AuthService, private pedidoService: PedidoService) {}
 
   ngOnInit(): void {
+    console.log('DashboardProfessor ngOnInit disparado');
     this.userName = this.authService.getUserName();
 
     // MOCKS (mantenha os seus)
@@ -40,16 +41,18 @@ export class DashboardProfessor implements OnInit {
     ];
 
     // Pedidos de microaula do sistema (carregados do backend)
-    this.pedidoService.getPedidosPendentes().subscribe({
-    next: (pedidos) => {
-      this.pedidosPendentes = pedidos;
-      console.log('DEBUG pedidos:', pedidos); // <-- ADICIONE!
-    },
-    error: () => {
-      this.pedidosPendentes = [];
-    }
-  });
+    console.log('Antes do subscribe pedidos');
+this.pedidoService.getPedidosPendentes().subscribe({
+  next: pedidos => {
+    console.log('DEBUG pedidos:', pedidos);
+    this.pedidosPendentes = pedidos;
+  },
+  error: err => {
+    console.log('ERRO pedidos:', err);
+    this.pedidosPendentes = [];
   }
+});
+}
 
   abrirCriarCurso() {
     alert('Abrindo criação de novo curso...');
