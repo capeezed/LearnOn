@@ -27,7 +27,7 @@ export class SobreNos {
       nome: 'Gabriel Capelini de Oliveira',
       cargo: ['Dev Back-End', 'Analista de Viabilidade', 'Especialista em Deploy'],
       imageUrl: 'assets/gabriel.jpg',
-      linkedinUrl: 'https://linkedin.com/in/...',
+      linkedinUrl: 'https://www.linkedin.com/in/gabrielcapelinideoliveira',
       githubUrl: 'https://github.com/capeezed'
     },
     {
@@ -41,7 +41,7 @@ export class SobreNos {
       nome: 'Melissa Yukari Kato',
       cargo: ['Dev Front-End', 'Engenheira de Testes', 'Analista de Suporte'],
       imageUrl: 'assets/mel.jpg',
-      linkedinUrl: 'https://linkedin.com/in/...',
+      linkedinUrl: 'https://www.linkedin.com/in/melissa-yukari-kato-7b79392b1',
       githubUrl: 'https://github.com/yukari4u'
     }
   ];
