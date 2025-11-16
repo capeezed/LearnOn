@@ -66,7 +66,7 @@
                 {{ pedido.data_pedido | date:'short' }}
               </div>
             </li>
-            <li *ngIf="pedidosPendentes.length === 0" class="text-muted">Nenhum pedido de microaula pendente.</li>
+            <li *ngIf="!pedidosPendentes.length" class="text-muted">Nenhum pedido de microaula pendente.</li>
           </ul>
         </div>
       </div>
