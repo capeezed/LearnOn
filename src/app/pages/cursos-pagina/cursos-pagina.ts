@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+interface Curso {
+  id: number;
+  nome: string;
+  especialista: string;
+  nota: number;
+  preco: number;
+  imagemURL: string;
+  categoria: string;
+}
 
 @Component({
   selector: 'app-cursos-pagina',
@@ -7,57 +18,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './cursos-pagina.css'
 })
 export class CursosPagina implements OnInit {
-  //Array de dados simulados (pode ser substituído por dados reais (API))
-  readonly todosCursos = [
+  readonly todosCursos: Curso[] = [
     { id: 1, nome: 'Introdução ao Docker e Containers', especialista: 'Dani Namie', nota: 5, preco: 9.90, imagemURL:'assets/docker.jpg', categoria: 'Programação' },
     { id: 2, nome: 'Como fazer CupCake', especialista: 'Juju Moraes', nota: 3, preco: 5.50, imagemURL:'assets/cupcake.jpg', categoria: 'Culinária' },
     { id: 3, nome: 'Decoração temática de Jujutsu Kaisen', especialista: 'Mel Kato', nota: 2, preco: 10, imagemURL:'assets/decoração jujutsu.jpg', categoria: 'Decoração' },
     { id: 4, nome: 'Como desenhar uma lua', especialista: 'Gabriel Capelini', nota: 4, preco: 9.90, imagemURL:'assets/lua desenho.jpg', categoria: 'Artes' },
     { id: 5, nome: 'Aprenda a fazer yoga', especialista: 'Lua', nota: 4, preco: 15.50, imagemURL:'assets/yoga.jpg', categoria: 'Saúde' },
-  ]
+  ];
 
-  // Array que será exibido no *ngFor
-  cursosExibidos: any[] = [];
-  minNota: number = 0; // Avaliação mínima selecionada (default: 0)
-
+  cursosExibidos: Curso[] = [];
+  minNota: number = 0;
   categoriasDisponiveis = [ 'Programação', 'Culinária', 'Decoração', 'Artes', 'Saúde' ];
-  categoriasEscolhidas: { [key: string]: boolean } = {}; // Guarda o estado dos checkboxes
-  
+  categoriasEscolhidas: { [key: string]: boolean } = {};
+  termoPesquisa: string = '';
+
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // Inicializa o array de cursos com todos os dados
-    this.cursosExibidos = [ 
-      ...this.todosCursos
-     ];
+    this.route.queryParams.subscribe(params => {
+      this.termoPesquisa = (params['busca'] || '').trim().toLowerCase();
+      this.filtrarCursos();
+    });
 
-    // Inicializa o estado dos checkboxes para todas as categorias como false
     this.categoriasDisponiveis.forEach(cat => {
       this.categoriasEscolhidas[cat] = false;
     });
   }
 
   mudarFiltro() {
-    let filteredList = [...this.todosCursos]; // Começa com a lista completa
-    
-    // 1. Filtragem por Categoria (Checkboxes)
+    this.filtrarCursos();
+  }
+
+  filtrarCursos() {
+    let filteredList: Curso[] = [...this.todosCursos];
+
+    if (this.termoPesquisa) {
+      filteredList = filteredList.filter(curso =>
+        curso.nome.toLowerCase().includes(this.termoPesquisa)
+      );
+    }
+
     const activeCategories = this.categoriasDisponiveis.filter(
       cat => this.categoriasEscolhidas[cat]
     );
-
     if (activeCategories.length > 0) {
-      filteredList = filteredList.filter(curso => 
+      filteredList = filteredList.filter(curso =>
         activeCategories.includes(curso.categoria)
       );
     }
 
-    // 2. Filtragem por Avaliação Mínima (Dropdown)
     if (this.minNota > 0) {
-    filteredList = filteredList.filter(curso => curso.nota >= this.minNota);
+      filteredList = filteredList.filter(curso => curso.nota >= this.minNota);
     }
-    
-    // Atualiza a lista exibida no *ngFor
-    this.cursosExibidos = filteredList;
 
+    this.cursosExibidos = filteredList;
   }
-  
 }

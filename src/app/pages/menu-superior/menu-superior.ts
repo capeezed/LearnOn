@@ -13,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MenuSuperior implements OnInit {
   itemCount$!: Observable<number>;
+  termoPesquisa: string = ''; // <-- NOVO: model do input
 
   constructor(
     private GerenciamentoCarrinho: GerenciamentoCarrinho,
@@ -24,6 +25,14 @@ export class MenuSuperior implements OnInit {
     this.itemCount$ = this.GerenciamentoCarrinho.carrinhoItems$.pipe(
       map(items => items.length)
     );
+  }
+
+  pesquisarCurso(): void {
+    if (!this.termoPesquisa || !this.termoPesquisa.trim()) {
+      return;
+    }
+    // Redireciona para a rota de cursos passando termo via query param "busca"
+    this.router.navigate(['/cursos'], { queryParams: { busca: this.termoPesquisa } });
   }
 
   goToCart(): void {
