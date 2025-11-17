@@ -15,8 +15,7 @@ export class EsqueciSenha implements OnInit {
   successMessage: string = ''; 
   errorMessage: string = ''; 
   isSubmitting: boolean = false; 
-  
-  // 🚨 ATUALIZAÇÃO DA URL DA API
+
   private apiUrl = 'https://heterozygous-stephnie-oversweetly.ngrok-free.dev/api/auth/forgot-password';
 
   constructor(
@@ -52,14 +51,12 @@ export class EsqueciSenha implements OnInit {
     this.http.post<{ message: string }>(this.apiUrl, emailData)
       .subscribe({
         next: (response) => {
-          // Mensagem de sucesso configurada para o usuário
           this.successMessage = 'Se o e-mail estiver cadastrado, você receberá um link de redefinição. Verifique sua caixa de entrada.';
           this.forgotForm.reset();
           this.isSubmitting = false;
         },
         error: (error) => {
           console.error('Erro de API:', error);
-          // O ngrok pode desconectar, o que causaria um erro de rede
           this.errorMessage = 'Erro de conexão ou no servidor. Verifique se sua API está ativa.'; 
           this.isSubmitting = false;
         }
