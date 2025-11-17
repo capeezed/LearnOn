@@ -13,8 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MenuSuperior implements OnInit {
   itemCount$!: Observable<number>;
-  termoPesquisa: string = ''; // <-- NOVO: model do input
-
+  termoPesquisa: string = ''; 
   constructor(
     private GerenciamentoCarrinho: GerenciamentoCarrinho,
     private router: Router,
@@ -31,7 +30,6 @@ export class MenuSuperior implements OnInit {
     if (!this.termoPesquisa || !this.termoPesquisa.trim()) {
       return;
     }
-    // Redireciona para a rota de cursos passando termo via query param "busca"
     this.router.navigate(['/cursos'], { queryParams: { busca: this.termoPesquisa } });
   }
 
