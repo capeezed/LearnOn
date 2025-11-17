@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router'; 
 import { HttpClient } from '@angular/common/http';
-// ❌ REMOVIDO: Importação do validador customizado
 
 @Component({
   selector: 'app-reset-password',
@@ -35,10 +34,9 @@ export class ResetPassword implements OnInit {
       return;
     }
 
-    // 1. Cria o formulário sem o validador no nível do FormGroup
     this.resetForm = this.fb.group({
       novaSenha: ['', [Validators.required, Validators.minLength(6)]],
-      confirmacaoNovaSenha: ['', [Validators.required]] // Mantido o campo obrigatório
+      confirmacaoNovaSenha: ['', [Validators.required]] 
     });
   }
   
@@ -58,10 +56,8 @@ export class ResetPassword implements OnInit {
 
     const { novaSenha, confirmacaoNovaSenha } = this.resetForm.value;
 
-    // 2. VERIFICAÇÃO MANUAL DA SENHA NO SUBMIT
     if (novaSenha !== confirmacaoNovaSenha) {
         this.errorMessage = 'As senhas não coincidem. Por favor, digite novamente.';
-        // Opcional: marca o campo de confirmação como inválido
         this.confirmacaoNovaSenha?.setErrors({ mismatch: true }); 
         return;
     }
@@ -73,7 +69,6 @@ export class ResetPassword implements OnInit {
       novaSenha: novaSenha
     };
 
-    // 3. Envio para a API
     this.http.post<{ message: string }>(this.apiUrl, payload)
       .subscribe({
         next: (response) => {
