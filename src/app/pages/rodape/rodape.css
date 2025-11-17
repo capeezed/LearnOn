@@ -1,13 +1,12 @@
 .bg-dark-custom {
-  background-color: #2F4156; /* Cor do azul escuro da sua imagem */
+  background-color: #2F4156;
 }
 
-/* Para o ícone de e-mail opcional (se estiver usando Font Awesome ou Bootstrap Icons) */
 .input-group-text {
     background-color: #ffffff;
     border-right: none;
 }
 
 .bg-footer-custom {
-  background-color: #F5EFEB; /* Cor de fundo personalizada */
+  background-color: #F5EFEB; 
 }
