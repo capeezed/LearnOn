@@ -1,7 +1,7 @@
 // src/app/dashboard/dashboard.ts
 
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service'; // Use o caminho correto
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -12,16 +12,12 @@ import { AuthService } from '../../services/auth.service'; // Use o caminho corr
 export class Dashboard implements OnInit {
 
   userName: string | null = null;
-  userType: string | null = null; // Para verificar se é 'aluno' ou 'especialista'
+  userType: string | null = null; 
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    // Busca o nome do usuário assim que o componente é carregado
     this.userName = this.authService.getUserName();
-    
-    // Supondo que você adicionou um método para pegar o tipo de usuário no AuthService
-    // this.userType = this.authService.getUserType(); 
   }
 
   logout() {
