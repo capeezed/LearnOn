@@ -16,7 +16,7 @@
 
 .card-title {
   font-size: 1.15rem;
-  color: #2F4F4F; /* Cor primária do LearnOn */
+  color: #2F4F4F; 
   cursor: pointer;
 }
 
@@ -26,20 +26,17 @@
 
 .price-text {
   font-size: 1.3rem;
-  color: #4CAF50; /* Cor de destaque (verde) para preço */
+  color: #4CAF50; 
 }
 
-/* Cor primária (azul escuro) para o badge de curso completo */
 .bg-custom-primary {
   background-color: #2F4F4F !important;
 }
 
-/* Cor secundária (diferente) para micro aula */
 .bg-custom-secondary {
-  background-color: #6C757D !important; /* Cinza do Bootstrap */
+  background-color: #6C757D !important; 
 }
 
-/* Estilo para o botão de ação no card */
 .btn-custom-outline {
     color: #2F4F4F;
     border-color: #2F4F4F;
