@@ -1,15 +1,12 @@
-/* Cor primária para títulos */
 .text-custom-primary {
   color: #2F4156;
 }
 
-/* Cor de destaque para preço (verde, como usado no CourseCard) */
 .price-color {
     color: #4CAF50;
     font-size: 1.1rem;
 }
 
-/* Estilo para o botão de ação principal */
 .btn-custom {
   background-color: #2F4156;
   color: white;
@@ -19,14 +16,12 @@
   background-color: #567C8D;
 }
 
-/* Imagem do item no carrinho */
 .cart-item-img {
     width: 90px;
     height: 60px;
     object-fit: cover;
 }
 
-/* Faz o resumo do pedido 'grudar' no topo da tela (fixo enquanto o usuário rola) */
 .checkout-summary {
     top: 20px;
 }
