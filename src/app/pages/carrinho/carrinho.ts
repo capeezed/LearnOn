@@ -21,10 +21,10 @@ interface itemsCarrinho {
 })
 export class Carrinho implements OnInit, OnDestroy {
 
-  carrinhoItems: any[] = []; //array a ser preenchido com os itens do carrinho
+  carrinhoItems: any[] = [];
   subtotal: number = 0;
 
-  private cartSubscription!: Subscription; //gerenciar a inscrição
+  private cartSubscription!: Subscription; 
 
   constructor(private gerenciamentoCarrinho: GerenciamentoCarrinho) { }
   
@@ -33,12 +33,11 @@ export class Carrinho implements OnInit, OnDestroy {
     this.cartSubscription = this.gerenciamentoCarrinho.carrinhoItems$.subscribe(items => {
       this.carrinhoItems = items;
       this.calcularSubtotal();
-      console.log("Carrinho atualizado. Itens:", this.carrinhoItems); // Verificação
+      console.log("Carrinho atualizado. Itens:", this.carrinhoItems); 
     });
   }
 
   ngOnDestroy(): void {
-    // cancelar inscrição para evitar vazamentos de memória
     this.cartSubscription.unsubscribe();
   }
 
@@ -50,12 +49,11 @@ export class Carrinho implements OnInit, OnDestroy {
     this.gerenciamentoCarrinho.removerDoCarrinho(itemId);
   }
 
-  // Métodos que seriam implementados:
   removeItem(itemId: number): void {
-    console.log("Chamando remoção para ID:", itemId); // Verificação
+    console.log("Chamando remoção para ID:", itemId); 
     this.gerenciamentoCarrinho.removeItem(itemId);
   }
-  proceedToCheckout(): void { /* Lógica para navegar para o checkout */ }
+  proceedToCheckout(): void { }
 
   formatarPreco(price: number): string {
     return price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
