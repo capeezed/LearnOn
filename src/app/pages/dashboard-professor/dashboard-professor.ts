@@ -31,7 +31,6 @@ export class DashboardProfessor implements OnInit {
     console.log('DashboardProfessor ngOnInit disparado');
     this.userName = this.authService.getUserName();
 
-    // MOCKS (mantenha os seus)
     this.aulasHoje = 2;
     this.alunosAtivos = 12;
     this.cursosCriados = 3;
@@ -40,7 +39,6 @@ export class DashboardProfessor implements OnInit {
       { titulo: 'Introdução à Física', data: '11/11', hora: '15:30', aluno: 'Ana R.' },
     ];
 
-    // Pedidos de microaula do sistema (carregados do backend)
     console.log('Antes do subscribe pedidos');
 this.pedidoService.getPedidosPendentes().subscribe({
   next: pedidos => {
