@@ -1,17 +1,12 @@
-/* src/app/dashboard/dashboard.css */
-
-/* Remove a altura mínima para permitir que a sidebar defina a altura */
 .dashboard-container {
     min-height: 100vh;
 }
 
-/* Estilo para a Sidebar */
 .sidebar {
-    background-color: #2F4156 !important; /* Seu azul escuro customizado */
+    background-color: #2F4156 !important; 
     padding: 0;
 }
 
-/* Estilo para os itens da lista da Sidebar */
 .list-group-item {
     background-color: transparent !important;
     color: #f8f9fa;
@@ -22,26 +17,23 @@
 }
 
 .list-group-item:hover, .list-group-item.active {
-    background-color: #2F4156 !important; /* Um tom um pouco mais claro no hover/ativo */
+    background-color: #2F4156 !important; 
     color: white !important;
     border-radius: 0;
 }
 
-/* Estilo para o botão Sair */
 .logout-btn {
     position: absolute;
     bottom: 20px;
     width: 10%;
     text-align: left;
-    color: #5077ca; /* Amarelo/aviso */
+    color: #5077ca; 
 }
 
-/* Cor primária para o título principal */
 .text-custom-primary {
     color: #2F4F4F;
 }
 
-/* Área de conteúdo principal */
 .content-area {
     background-color: #ffffff;
     min-height: 100vh;
