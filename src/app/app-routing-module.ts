@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'sobre-nos', component: SobreNos },
   { path: 'rodape', component: Rodape },
   { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
-  { path: 'dashboard-professor', component: DashboardProfessor},
+  { path: 'dashboard-professor', component: DashboardProfessor, canActivate: [profGuard] },
   { path: '**', redirectTo: '/home' }
 ];
 
