@@ -24,7 +24,7 @@
           "builder": "@angular/build:application",
           "options": {
             "outputMode": "static",
-            "outputPath": "dist/LearnOn",
+            "outputPath": "dist/LearnOn/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
