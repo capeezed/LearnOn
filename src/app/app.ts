@@ -1,12 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Navbar } from './shared/navbar/navbar';
+import { AuthService } from './services/auth';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [RouterOutlet, Navbar],
+  template: `
+    @if(auth.estaLogado()) {
+      <app-navbar />
+    }
+    <router-outlet />
+  `,
 })
 export class App {
-  protected readonly title = signal('LearnOn');
+  constructor(public auth: AuthService) {}
 }
