@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PedidoService } from '../../services/pedido';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,18 +25,12 @@ import { CommonModule } from '@angular/common';
       font-family: 'DM Sans', sans-serif;
     }
 
-    /* NAVBAR */
-    
-    
-
-    /* LAYOUT */
     .dash-body {
       max-width: 1100px;
       margin: 0 auto;
       padding: 48px 24px;
     }
 
-    /* HERO BANNER */
     .hero-banner {
       background: var(--navy);
       border-radius: 24px;
@@ -74,7 +67,6 @@ import { CommonModule } from '@angular/common';
     .btn-pedido:hover { background: #c04020; transform: translateY(-2px); }
     .hero-emoji { font-size: 72px; line-height: 1; flex-shrink: 0; }
 
-    /* QUICK CARDS */
     .quick-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -111,7 +103,6 @@ import { CommonModule } from '@angular/common';
     }
     .quick-card:hover .quick-arrow { color: var(--accent); transform: translateX(4px); }
 
-    /* PEDIDOS */
     .section-header {
       display: flex; align-items: center; justify-content: space-between;
       margin-bottom: 20px;
@@ -175,7 +166,6 @@ import { CommonModule } from '@angular/common';
     .badge-expired     { background: rgba(122,112,96,.1);  color: var(--muted); }
 
     @media(max-width: 768px) {
-      .dash-nav { padding: 14px 20px; }
       .dash-body { padding: 28px 16px; }
       .hero-banner { padding: 32px 28px; }
       .hero-emoji { display: none; }
@@ -186,12 +176,8 @@ import { CommonModule } from '@angular/common';
     }
   `],
   template: `
-    <!-- NAVBAR -->
-    
-
     <div class="dash-body">
 
-      <!-- HERO BANNER -->
       <div class="hero-banner">
         <div>
           <h2>Olá! Bem-vindo ao LearnOn 👋</h2>
@@ -201,7 +187,6 @@ import { CommonModule } from '@angular/common';
         <div class="hero-emoji">🎓</div>
       </div>
 
-      <!-- QUICK ACCESS -->
       <div class="quick-grid">
         <a routerLink="/meus-cursos" class="quick-card">
           <div class="quick-icon">📚</div>
@@ -223,7 +208,6 @@ import { CommonModule } from '@angular/common';
         </a>
       </div>
 
-      <!-- PEDIDOS RECENTES -->
       <div class="section-header">
         <div class="section-title">Pedidos Recentes</div>
         <a routerLink="/pedir-curso" class="btn-novo">+ Novo pedido</a>
@@ -235,17 +219,18 @@ import { CommonModule } from '@angular/common';
             <p>Você ainda não fez nenhum pedido.</p>
             <a routerLink="/pedir-curso" class="btn-filled">Fazer meu primeiro pedido</a>
           </div>
-        }
-        @for (pedido of pedidos; track pedido.id) {
-          <div class="pedido-row">
-            <div>
-              <div class="pedido-title">{{ pedido.title }}</div>
-              <div class="pedido-tag">{{ pedido.topic_tag }}</div>
+        } @else {
+          @for (pedido of pedidos; track pedido.id) {
+            <div class="pedido-row">
+              <div>
+                <div class="pedido-title">{{ pedido.title }}</div>
+                <div class="pedido-tag">{{ pedido.topic_tag }}</div>
+              </div>
+              <span class="badge" [class]="badgeClass(pedido.status)">
+                {{ statusLabel(pedido.status) }}
+              </span>
             </div>
-            <span class="badge" [class]="badgeClass(pedido.status)">
-              {{ statusLabel(pedido.status) }}
-            </span>
-          </div>
+          }
         }
       </div>
 
@@ -255,20 +240,20 @@ import { CommonModule } from '@angular/common';
 export class Dashboard implements OnInit {
   pedidos: any[] = [];
 
-  constructor(private pedidoService: PedidoService) {}
+  constructor(
+    private pedidoService: PedidoService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-  console.log('Token:', this.pedidoService['auth'].getToken()); // ← checa se tem token
-  this.pedidoService.meusPedidos().subscribe({
-    next: (res: any) => {
-      console.log('Pedidos:', res); // ← checa o retorno
-      this.pedidos = res.slice(0, 5);
-    },
-    error: (err) => {
-      console.error('Erro pedidos:', err); // ← checa o erro
-    }
-  });
-}
+    this.pedidoService.meusPedidos().subscribe({
+      next: (res: any) => {
+        this.pedidos = Array.isArray(res) ? res.slice(0, 5) : [];
+        this.cdr.detectChanges();
+      },
+      error: (err) => console.error('erro:', err)
+    });
+  }
 
   statusLabel(status: string) {
     const map: any = {

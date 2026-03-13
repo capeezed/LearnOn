@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { CursoService } from '../../services/curso';
@@ -32,7 +32,6 @@ import { CursoService } from '../../services/curso';
       padding: 48px 24px;
     }
 
-    /* HEADER */
     .page-label {
       display: inline-block;
       font-size: 12px; font-weight: 700;
@@ -46,7 +45,6 @@ import { CursoService } from '../../services/curso';
     }
     .page-sub { font-size: 15px; color: var(--muted); margin-bottom: 40px; }
 
-    /* SUMMARY BAR */
     .summary-bar {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -67,14 +65,12 @@ import { CursoService } from '../../services/curso';
     .summary-num em { color: var(--accent); font-style: normal; }
     .summary-desc { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
-    /* GRID */
     .cursos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 24px;
     }
 
-    /* CARD */
     .curso-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -89,13 +85,10 @@ import { CursoService } from '../../services/curso';
       box-shadow: 0 20px 60px rgba(28,43,58,.1);
     }
 
-    .card-banner {
-      height: 10px;
-      background: var(--border);
-    }
-    .card-banner.done       { background: var(--teal); }
+    .card-banner { height: 10px; background: var(--border); }
+    .card-banner.done        { background: var(--teal); }
     .card-banner.in-progress { background: linear-gradient(90deg, var(--navy), var(--accent)); }
-    .card-banner.new        { background: var(--gold); }
+    .card-banner.new         { background: var(--gold); }
 
     .card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
 
@@ -114,11 +107,8 @@ import { CursoService } from '../../services/curso';
       font-size: 18px; font-weight: 800;
       color: var(--navy); margin-bottom: 8px; line-height: 1.3;
     }
-    .card-topic {
-      font-size: 13px; color: var(--muted); margin-bottom: 20px;
-    }
+    .card-topic { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
 
-    /* PROGRESS */
     .progress-wrap { margin-bottom: 20px; }
     .progress-top {
       display: flex; justify-content: space-between; align-items: center;
@@ -126,9 +116,7 @@ import { CursoService } from '../../services/curso';
     }
     .progress-label { font-size: 12px; font-weight: 600; color: var(--muted); }
     .progress-pct   { font-size: 13px; font-weight: 800; color: var(--navy); }
-    .progress-bar {
-      height: 8px; background: var(--bg2); border-radius: 8px; overflow: hidden;
-    }
+    .progress-bar { height: 8px; background: var(--bg2); border-radius: 8px; overflow: hidden; }
     .progress-fill {
       height: 100%; border-radius: 8px;
       background: linear-gradient(90deg, var(--navy), var(--accent));
@@ -154,7 +142,6 @@ import { CursoService } from '../../services/curso';
     .btn-continuar:hover { background: var(--accent); }
     .btn-continuar.done  { background: var(--teal); }
 
-    /* EMPTY STATE */
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
@@ -178,7 +165,6 @@ import { CursoService } from '../../services/curso';
     }
     .btn-filled:hover { background: var(--accent); }
 
-    /* LOADING */
     .skeleton {
       background: linear-gradient(90deg, var(--bg2) 25%, var(--border) 50%, var(--bg2) 75%);
       background-size: 200% 100%;
@@ -186,7 +172,6 @@ import { CursoService } from '../../services/curso';
       border-radius: 8px;
     }
     @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-
     .skeleton-card {
       background: var(--white); border: 1px solid var(--border);
       border-radius: 24px; padding: 28px; height: 220px;
@@ -205,7 +190,6 @@ import { CursoService } from '../../services/curso';
       <h1 class="page-title">Meus Cursos</h1>
       <p class="page-sub">Acompanhe seu progresso e continue de onde parou.</p>
 
-      <!-- SUMMARY -->
       @if (!carregando && cursos.length > 0) {
         <div class="summary-bar">
           <div class="summary-item">
@@ -223,7 +207,6 @@ import { CursoService } from '../../services/curso';
         </div>
       }
 
-      <!-- GRID -->
       <div class="cursos-grid">
 
         @if (carregando) {
@@ -235,49 +218,47 @@ import { CursoService } from '../../services/curso';
               <div class="skeleton" style="height:8px;width:100%;"></div>
             </div>
           }
-        }
-
-        @if (!carregando && cursos.length === 0) {
+        } @else if (cursos.length === 0) {
           <div class="empty-state">
-            <div class="empty-icon"></div>
+            <div class="empty-icon">📚</div>
             <div class="empty-title">Nenhum curso ainda</div>
             <p class="empty-sub">Faça seu primeiro pedido e comece a aprender do seu jeito.</p>
             <a routerLink="/pedir-curso" class="btn-filled">+ Pedir meu primeiro curso</a>
           </div>
-        }
-
-        @for (curso of cursos; track curso.id) {
-          <a [routerLink]="['/curso', curso.id]" class="curso-card">
-            <div class="card-banner" [class]="bannerClass(curso)"></div>
-            <div class="card-body">
-              <span class="card-tag" [class]="tagClass(curso.format)">
-                {{ formatLabel(curso.format) }}
-              </span>
-              <div class="card-title">{{ curso.title }}</div>
-              <div class="card-topic">{{ curso.topic_tag }}</div>
-
-              <div class="progress-wrap">
-                <div class="progress-top">
-                  <span class="progress-label">Progresso</span>
-                  <span class="progress-pct">{{ curso.progress || 0 }}%</span>
-                </div>
-                <div class="progress-bar">
-                  <div
-                    class="progress-fill"
-                    [class.done]="(curso.progress || 0) >= 100"
-                    [style.width]="(curso.progress || 0) + '%'"
-                  ></div>
-                </div>
-              </div>
-
-              <div class="card-footer-row">
-                <span class="card-date">{{ curso.created_at | date:'dd/MM/yyyy' }}</span>
-                <span class="btn-continuar" [class.done]="(curso.progress || 0) >= 100">
-                  {{ (curso.progress || 0) >= 100 ? '✓ Concluído' : 'Continuar →' }}
+        } @else {
+          @for (curso of cursos; track curso.id) {
+            <a [routerLink]="['/curso', curso.id]" class="curso-card">
+              <div class="card-banner" [class]="bannerClass(curso)"></div>
+              <div class="card-body">
+                <span class="card-tag" [class]="tagClass(curso.format)">
+                  {{ formatLabel(curso.format) }}
                 </span>
+                <div class="card-title">{{ curso.title }}</div>
+                <div class="card-topic">{{ curso.topic_tag }}</div>
+
+                <div class="progress-wrap">
+                  <div class="progress-top">
+                    <span class="progress-label">Progresso</span>
+                    <span class="progress-pct">{{ curso.progress || 0 }}%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      [class.done]="(curso.progress || 0) >= 100"
+                      [style.width]="(curso.progress || 0) + '%'"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="card-footer-row">
+                  <span class="card-date">{{ curso.enrolled_at | date:'dd/MM/yyyy' }}</span>
+                  <span class="btn-continuar" [class.done]="(curso.progress || 0) >= 100">
+                    {{ (curso.progress || 0) >= 100 ? '✓ Concluído' : 'Continuar →' }}
+                  </span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+          }
         }
 
       </div>
@@ -288,15 +269,22 @@ export class MeusCursos implements OnInit {
   cursos: any[] = [];
   carregando = true;
 
-  constructor(private cursoService: CursoService) {}
+  constructor(
+    private cursoService: CursoService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.cursoService.meusCursos().subscribe({
       next: (res: any) => {
-        this.cursos    = res;
+        this.cursos     = Array.isArray(res) ? res : [];
         this.carregando = false;
+        this.cdr.detectChanges();
       },
-      error: () => { this.carregando = false; }
+      error: () => {
+        this.carregando = false;
+        this.cdr.detectChanges();
+      }
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CursoService } from '../../services/curso';
 
@@ -25,55 +25,34 @@ import { CursoService } from '../../services/curso';
       font-family: 'DM Sans', sans-serif;
     }
 
-    .page-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
 
-    /* HEADER */
     .page-label {
-      display: inline-block;
-      font-size: 12px; font-weight: 700;
+      display: inline-block; font-size: 12px; font-weight: 700;
       letter-spacing: 3px; text-transform: uppercase;
       color: var(--accent); margin-bottom: 10px;
     }
     .page-title {
       font-family: 'Nunito', sans-serif;
-      font-size: 32px; font-weight: 900;
-      color: var(--navy); margin-bottom: 8px;
+      font-size: 32px; font-weight: 900; color: var(--navy); margin-bottom: 8px;
     }
     .page-sub { font-size: 15px; color: var(--muted); margin-bottom: 40px; }
 
-    /* LAYOUT */
     .agenda-layout {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 28px;
-      align-items: start;
+      display: grid; grid-template-columns: 300px 1fr;
+      gap: 28px; align-items: start;
     }
-    @media(max-width: 900px) {
-      .agenda-layout { grid-template-columns: 1fr; }
-    }
+    @media(max-width: 900px) { .agenda-layout { grid-template-columns: 1fr; } }
 
-    /* MINI CALENDÁRIO */
     .calendar-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-      position: sticky;
-      top: 80px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 24px; padding: 28px; position: sticky; top: 80px;
     }
-
     .cal-header {
       display: flex; align-items: center; justify-content: space-between;
       margin-bottom: 20px;
     }
-    .cal-month {
-      font-family: 'Nunito', sans-serif;
-      font-size: 16px; font-weight: 800; color: var(--navy);
-    }
+    .cal-month { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; color: var(--navy); }
     .cal-nav {
       background: var(--bg); border: none; cursor: pointer;
       width: 30px; height: 30px; border-radius: 8px;
@@ -82,70 +61,34 @@ import { CursoService } from '../../services/curso';
       display: flex; align-items: center; justify-content: center;
     }
     .cal-nav:hover { background: var(--navy); color: white; }
-
-    .cal-weekdays {
-      display: grid; grid-template-columns: repeat(7, 1fr);
-      margin-bottom: 6px;
-    }
-    .cal-wd {
-      text-align: center; font-size: 11px;
-      font-weight: 700; color: var(--muted);
-      padding: 4px 0;
-    }
-
-    .cal-days {
-      display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px;
-    }
+    .cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 6px; }
+    .cal-wd { text-align: center; font-size: 11px; font-weight: 700; color: var(--muted); padding: 4px 0; }
+    .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
     .cal-day {
-      aspect-ratio: 1;
-      display: flex; align-items: center; justify-content: center;
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
       font-size: 13px; font-weight: 500; color: var(--muted);
       border-radius: 8px; cursor: pointer;
-      transition: background .15s, color .15s;
-      position: relative;
+      transition: background .15s, color .15s; position: relative;
     }
     .cal-day:hover { background: var(--bg2); color: var(--navy); }
-    .cal-day.today {
-      background: var(--navy); color: white; font-weight: 700;
-    }
+    .cal-day.today { background: var(--navy); color: white; font-weight: 700; }
     .cal-day.has-event::after {
-      content: '';
-      position: absolute; bottom: 3px;
-      width: 4px; height: 4px; border-radius: 50%;
-      background: var(--accent);
+      content: ''; position: absolute; bottom: 3px;
+      width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
     }
-    .cal-day.today.has-event::after { background: var(--accent2); }
     .cal-day.other-month { opacity: .3; }
     .cal-day.empty { cursor: default; }
-
     .cal-legend {
-      margin-top: 20px; padding-top: 16px;
-      border-top: 1px solid var(--bg2);
-      display: flex; align-items: center; gap: 8px;
-      font-size: 12px; color: var(--muted);
+      margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--bg2);
+      display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted);
     }
-    .legend-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
-    }
-
-    /* AULAS */
-    .aulas-col {}
-
-    .section-title {
-      font-family: 'Nunito', sans-serif;
-      font-size: 18px; font-weight: 800; color: var(--navy);
-      margin-bottom: 16px;
-    }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 
     .aula-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 24px 28px;
-      margin-bottom: 16px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 24px 28px; margin-bottom: 16px;
       display: flex; gap: 20px; align-items: flex-start;
       transition: transform .2s, box-shadow .2s, border-color .2s;
-      text-decoration: none;
     }
     .aula-card:hover {
       transform: translateY(-3px);
@@ -154,48 +97,30 @@ import { CursoService } from '../../services/curso';
     }
 
     .aula-date-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 16px;
-      text-align: center;
-      flex-shrink: 0;
-      min-width: 64px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 12px 16px;
+      text-align: center; flex-shrink: 0; min-width: 64px;
     }
     .aula-date-box.today { background: var(--navy); border-color: var(--navy); }
-    .aula-day  {
-      font-family: 'Nunito', sans-serif;
-      font-size: 28px; font-weight: 900; color: var(--navy); line-height: 1;
-    }
-    .aula-date-box.today .aula-day  { color: white; }
-    .aula-mon  { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
-    .aula-date-box.today .aula-mon  { color: rgba(255,255,255,.6); }
+    .aula-day { font-family: 'Nunito', sans-serif; font-size: 28px; font-weight: 900; color: var(--navy); line-height: 1; }
+    .aula-date-box.today .aula-day { color: white; }
+    .aula-mon { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+    .aula-date-box.today .aula-mon { color: rgba(255,255,255,.6); }
 
     .aula-info { flex: 1; }
     .aula-tag {
-      display: inline-block;
-      padding: 3px 12px; border-radius: 50px;
-      font-size: 11px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .5px;
-      margin-bottom: 8px;
-      background: rgba(42,122,110,.1); color: var(--teal);
+      display: inline-block; padding: 3px 12px; border-radius: 50px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+      margin-bottom: 8px; background: rgba(42,122,110,.1); color: var(--teal);
     }
     .aula-title {
       font-family: 'Nunito', sans-serif;
-      font-size: 17px; font-weight: 800; color: var(--navy);
-      margin-bottom: 6px; line-height: 1.3;
+      font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 6px; line-height: 1.3;
     }
-    .aula-meta {
-      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    }
-    .aula-meta span {
-      display: flex; align-items: center; gap: 5px;
-      font-size: 13px; color: var(--muted);
-    }
+    .aula-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .aula-meta span { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--muted); }
 
-    .aula-action {
-      flex-shrink: 0; align-self: center;
-    }
+    .aula-action { flex-shrink: 0; align-self: center; }
     .btn-entrar {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--teal); color: white;
@@ -203,38 +128,29 @@ import { CursoService } from '../../services/curso';
       font-size: 13px; font-weight: 700;
       text-decoration: none; border: none; cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      transition: background .2s, transform .2s;
-      white-space: nowrap;
+      transition: background .2s, transform .2s; white-space: nowrap;
     }
     .btn-entrar:hover { background: #1f5e54; transform: translateY(-1px); }
     .btn-aguardar {
-      display: inline-block;
-      padding: 10px 20px; border-radius: 50px;
+      display: inline-block; padding: 10px 20px; border-radius: 50px;
       font-size: 13px; font-weight: 600; color: var(--muted);
-      background: var(--bg); border: 1.5px solid var(--border);
-      white-space: nowrap;
+      background: var(--bg); border: 1.5px solid var(--border); white-space: nowrap;
     }
 
-    /* SEPARADOR DE DATA */
     .date-separator {
-      display: flex; align-items: center; gap: 12px;
-      margin: 28px 0 16px;
+      display: flex; align-items: center; gap: 12px; margin: 28px 0 16px;
     }
     .date-separator span {
-      font-size: 12px; font-weight: 700;
-      color: var(--muted); text-transform: uppercase; letter-spacing: 1px;
-      white-space: nowrap;
+      font-size: 12px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
     }
     .date-separator::before, .date-separator::after {
       content: ''; flex: 1; height: 1px; background: var(--border);
     }
 
-    /* EMPTY */
     .empty-state {
       text-align: center; padding: 64px 24px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 24px;
+      background: var(--white); border: 1px solid var(--border); border-radius: 24px;
     }
     .empty-icon  { font-size: 52px; margin-bottom: 16px; }
     .empty-title {
@@ -243,18 +159,14 @@ import { CursoService } from '../../services/curso';
     }
     .empty-sub { font-size: 14px; color: var(--muted); }
 
-    /* SKELETON */
     .skeleton {
       background: linear-gradient(90deg, var(--bg2) 25%, var(--border) 50%, var(--bg2) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.4s infinite;
-      border-radius: 8px;
+      background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 8px;
     }
     @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
     .skeleton-aula {
       background: var(--white); border: 1px solid var(--border);
-      border-radius: 20px; padding: 24px 28px;
-      display: flex; gap: 20px; margin-bottom: 16px;
+      border-radius: 20px; padding: 24px 28px; display: flex; gap: 20px; margin-bottom: 16px;
     }
   `],
   template: `
@@ -266,7 +178,6 @@ import { CursoService } from '../../services/curso';
 
       <div class="agenda-layout">
 
-        <!-- MINI CALENDÁRIO -->
         <div class="calendar-card">
           <div class="cal-header">
             <button class="cal-nav" (click)="mesAnterior()">‹</button>
@@ -295,7 +206,6 @@ import { CursoService } from '../../services/curso';
           </div>
         </div>
 
-        <!-- AULAS -->
         <div class="aulas-col">
 
           @if (carregando) {
@@ -309,66 +219,64 @@ import { CursoService } from '../../services/curso';
                 </div>
               </div>
             }
-          }
-
-          @if (!carregando && aulas.length === 0) {
+          } @else if (aulas.length === 0) {
             <div class="empty-state">
-              <div class="empty-icon"></div>
+              <div class="empty-icon">🗓️</div>
               <div class="empty-title">Nenhuma aula agendada</div>
               <p class="empty-sub">Quando um instrutor confirmar uma sessão ao vivo, ela aparecerá aqui.</p>
             </div>
-          }
-
-          @if (!carregando && proximas.length > 0) {
-            <div class="date-separator"><span>Próximas</span></div>
-            @for (aula of proximas; track aula.id) {
-              <div class="aula-card">
-                <div class="aula-date-box" [class.today]="isHoje(aula.scheduled_at)">
-                  <div class="aula-day">{{ getDia(aula.scheduled_at) }}</div>
-                  <div class="aula-mon">{{ getMes(aula.scheduled_at) }}</div>
-                </div>
-                <div class="aula-info">
-                  <span class="aula-tag">🔴 Ao vivo</span>
-                  <div class="aula-title">{{ aula.course_title }}</div>
-                  <div class="aula-meta">
-                    <span>🕐 {{ getHora(aula.scheduled_at) }}</span>
-                    <span>⏱ {{ aula.duration_minutes || 60 }} min</span>
-                    <span>👤 {{ aula.instructor_name }}</span>
+          } @else {
+            @if (proximas.length > 0) {
+              <div class="date-separator"><span>Próximas</span></div>
+              @for (aula of proximas; track aula.id) {
+                <div class="aula-card">
+                  <div class="aula-date-box" [class.today]="isHoje(aula.scheduled_at)">
+                    <div class="aula-day">{{ getDia(aula.scheduled_at) }}</div>
+                    <div class="aula-mon">{{ getMes(aula.scheduled_at) }}</div>
+                  </div>
+                  <div class="aula-info">
+                    <span class="aula-tag">🔴 Ao vivo</span>
+                    <div class="aula-title">{{ aula.course_title }}</div>
+                    <div class="aula-meta">
+                      <span>🕐 {{ getHora(aula.scheduled_at) }}</span>
+                      <span>⏱ {{ aula.duration_minutes || 60 }} min</span>
+                      <span>👤 {{ aula.instructor_name }}</span>
+                    </div>
+                  </div>
+                  <div class="aula-action">
+                    @if (isHoje(aula.scheduled_at)) {
+                      <a [href]="aula.meeting_url || '#'" class="btn-entrar">Entrar na aula →</a>
+                    } @else {
+                      <span class="btn-aguardar">Em {{ diasAte(aula.scheduled_at) }} dia(s)</span>
+                    }
                   </div>
                 </div>
-                <div class="aula-action">
-                  @if (isHoje(aula.scheduled_at)) {
-                    <a [href]="aula.meeting_url || '#'" class="btn-entrar">Entrar na aula →</a>
-                  } @else {
-                    <span class="btn-aguardar">Em {{ diasAte(aula.scheduled_at) }} dia(s)</span>
-                  }
-                </div>
-              </div>
+              }
             }
-          }
 
-          @if (!carregando && passadas.length > 0) {
-            <div class="date-separator"><span>Realizadas</span></div>
-            @for (aula of passadas; track aula.id) {
-              <div class="aula-card" style="opacity:.6">
-                <div class="aula-date-box">
-                  <div class="aula-day">{{ getDia(aula.scheduled_at) }}</div>
-                  <div class="aula-mon">{{ getMes(aula.scheduled_at) }}</div>
-                </div>
-                <div class="aula-info">
-                  <span class="aula-tag" style="background:rgba(122,112,96,.1);color:var(--muted)">✓ Realizada</span>
-                  <div class="aula-title">{{ aula.course_title }}</div>
-                  <div class="aula-meta">
-                    <span>🕐 {{ getHora(aula.scheduled_at) }}</span>
-                    <span>👤 {{ aula.instructor_name }}</span>
+            @if (passadas.length > 0) {
+              <div class="date-separator"><span>Realizadas</span></div>
+              @for (aula of passadas; track aula.id) {
+                <div class="aula-card" style="opacity:.6">
+                  <div class="aula-date-box">
+                    <div class="aula-day">{{ getDia(aula.scheduled_at) }}</div>
+                    <div class="aula-mon">{{ getMes(aula.scheduled_at) }}</div>
+                  </div>
+                  <div class="aula-info">
+                    <span class="aula-tag" style="background:rgba(122,112,96,.1);color:var(--muted)">✓ Realizada</span>
+                    <div class="aula-title">{{ aula.course_title }}</div>
+                    <div class="aula-meta">
+                      <span>🕐 {{ getHora(aula.scheduled_at) }}</span>
+                      <span>👤 {{ aula.instructor_name }}</span>
+                    </div>
+                  </div>
+                  <div class="aula-action">
+                    <a [routerLink]="['/curso', aula.course_id]" class="btn-entrar" style="background:var(--navy)">
+                      Ver gravação
+                    </a>
                   </div>
                 </div>
-                <div class="aula-action">
-                  <a [routerLink]="['/curso', aula.course_id]" class="btn-entrar" style="background:var(--navy)">
-                    Ver gravação
-                  </a>
-                </div>
-              </div>
+              }
             }
           }
 
@@ -385,24 +293,32 @@ export class Agenda implements OnInit {
 
   diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
   diasCalendario: any[] = [];
-  mesAtual  = new Date().getMonth();
-  anoAtual  = new Date().getFullYear();
-  meses     = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
-                'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  mesAtual = new Date().getMonth();
+  anoAtual = new Date().getFullYear();
+  meses    = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+               'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
-  constructor(private cursoService: CursoService) {}
+  constructor(
+    private cursoService: CursoService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.cursoService.minhaAgenda().subscribe({
       next: (res: any) => {
-        this.aulas    = res;
+        this.aulas    = Array.isArray(res) ? res : [];
         const hoje    = new Date();
-        this.proximas = res.filter((a: any) => new Date(a.scheduled_at) >= hoje);
-        this.passadas = res.filter((a: any) => new Date(a.scheduled_at) <  hoje);
+        this.proximas = this.aulas.filter(a => new Date(a.scheduled_at) >= hoje);
+        this.passadas = this.aulas.filter(a => new Date(a.scheduled_at) <  hoje);
         this.carregando = false;
         this.gerarCalendario();
+        this.cdr.detectChanges();
       },
-      error: () => { this.carregando = false; this.gerarCalendario(); }
+      error: () => {
+        this.carregando = false;
+        this.gerarCalendario();
+        this.cdr.detectChanges();
+      }
     });
   }
 
