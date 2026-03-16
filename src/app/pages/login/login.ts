@@ -62,7 +62,55 @@ import { AuthService } from '../../services/auth';
       text-align: center;
       color: var(--muted);
       font-size: 15px;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
+    }
+
+    .btn-google {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 13px;
+      background: var(--white);
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color .2s, box-shadow .2s;
+      margin-bottom: 24px;
+      cursor: pointer;
+    }
+    .btn-google:hover {
+      border-color: var(--navy);
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    }
+    .btn-google img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .separator::before,
+    .separator::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .separator span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
     }
 
     .field-label {
@@ -85,6 +133,7 @@ import { AuthService } from '../../services/auth';
       outline: none;
       transition: border-color .2s, box-shadow .2s;
       margin-bottom: 20px;
+      box-sizing: border-box;
     }
     .field-input:focus {
       border-color: var(--navy);
@@ -149,6 +198,13 @@ import { AuthService } from '../../services/auth';
       <div class="brand">Learn<span>On</span></div>
       <p class="subtitle">Aprenda o que precisa, quando precisa.</p>
 
+      <a href="http://localhost:3000/api/auth/google" class="btn-google">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
+        Entrar com Google
+      </a>
+
+      <div class="separator"><span>ou entre com e-mail</span></div>
+
       <div>
         <label class="field-label">E-mail</label>
         <input
@@ -178,7 +234,7 @@ import { AuthService } from '../../services/auth';
       <div class="divider"></div>
 
       <p class="footer-link">
-        Não tem conta? <a routerLink="/cadastro">Cadastre-se</a>
+        Nao tem conta? <a routerLink="/cadastro">Cadastre-se</a>
       </p>
 
     </div>

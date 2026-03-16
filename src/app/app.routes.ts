@@ -9,6 +9,7 @@ import { Agenda } from './pages/agenda/agenda';
 import { InstrutorLogin } from './pages/instrutor-login/instrutor-login';
 import { InstrutorPainel }from './pages/instrutor-painel/instrutor-painel';
 import { InstrutorCadastro } from './pages/instrutor-cadastro/instrutor-cadastro';
+import { AuthCallback } from './pages/auth-callback/auth-callback';
 import { Home } from './pages/home/home';
 
 export const routes: Routes = [
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'instrutor/login', component: InstrutorLogin },
   { path: 'instrutor/painel', component: InstrutorPainel },
   { path: 'instrutor/cadastro', component: InstrutorCadastro },
+  { path: 'auth/callback', component: AuthCallback },
   { path: 'agenda',      component: Agenda },
 ];

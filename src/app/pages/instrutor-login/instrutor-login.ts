@@ -110,7 +110,7 @@ import { environment } from '../../../environments/environment';
       <a routerLink="/home" class="back-link">← Voltar para a home</a>
 
       <div class="card">
-        <div class="badge-instrutor">👨‍🏫 Área do Instrutor</div>
+        <div class="badge-instrutor">Área do Instrutor</div>
         <h1>Bem-vindo de volta</h1>
         <p class="subtitle">Acesse sua conta para gerenciar suas aulas.</p>
 

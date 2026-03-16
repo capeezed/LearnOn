@@ -297,7 +297,7 @@ import { environment } from '../../../environments/environment';
         <span class="nav-badge">Instrutor</span>
       </div>
       <div class="nav-right">
-        <span class="nav-nome">👤 {{ nome }}</span>
+        <span class="nav-nome">{{ nome }}</span>
         <button class="btn-sair" (click)="sair()">Sair</button>
       </div>
     </nav>
@@ -327,10 +327,10 @@ import { environment } from '../../../environments/environment';
       @if (aba === 'dashboard') {
         <div class="welcome-banner">
           <div>
-            <h2>Olá, {{ nome }}! 👋</h2>
+            <h2>Olá, {{ nome }}!</h2>
             <p>Aqui está um resumo da sua atividade na plataforma.</p>
           </div>
-          <div class="welcome-emoji">🏫</div>
+          <div class="welcome-emoji"></div>
         </div>
 
         <div class="stats-grid">
