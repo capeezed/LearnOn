@@ -243,6 +243,16 @@ footer p { font-size:14px; color:var(--muted); }
   box-shadow: 0 20px 60px rgba(2, 6, 23, 0.35);
 }
 
+:host.dark-mode .price-card:not(.featured) .price-tier,
+:host.dark-mode .price-card:not(.featured) .price-val small,
+:host.dark-mode .price-card:not(.featured) .price-desc {
+  color: rgba(226, 232, 240, 0.82);
+}
+
+:host.dark-mode .price-card:not(.featured) .price-list li {
+  color: #f8fafc;
+}
+
 /* SCROLL REVEAL */
 .reveal { opacity:1; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
