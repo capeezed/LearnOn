@@ -434,8 +434,8 @@ import { environment } from '../../../environments/environment';
             <div class="field">
               <label>Formato</label>
               <select [(ngModel)]="pub.format">
-                <option value="recorded">⏺ Gravado</option>
-                <option value="live">🔴 Ao vivo</option>
+                <option value="recorded">Gravado</option>
+                <option value="live">Ao vivo</option>
               </select>
             </div>
             <div class="field">
@@ -455,11 +455,11 @@ import { environment } from '../../../environments/environment';
           </div>
 
           <button class="btn-publicar" (click)="publicarCurso()" [disabled]="publicando">
-            {{ publicando ? 'Publicando...' : '📤 Publicar Curso' }}
+            {{ publicando ? 'Publicando...' : 'Publicar Curso' }}
           </button>
 
           @if (pubSucesso) {
-            <div class="sucesso">✅ Curso publicado com sucesso! O aluno já pode acessá-lo.</div>
+            <div class="sucesso">Curso publicado com sucesso! O aluno já pode acessá-lo.</div>
           }
           @if (pubErro) {
             <div class="erro-msg">{{ pubErro }}</div>

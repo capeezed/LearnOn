@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './shared/navbar/navbar';
 import { AuthService } from './services/auth';
+import { ThemeService } from './services/theme';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +16,8 @@ import { AuthService } from './services/auth';
   `,
 })
 export class App {
-  constructor(public auth: AuthService) {}
+  constructor(
+    public auth: AuthService,
+    public theme: ThemeService,
+  ) {}
 }

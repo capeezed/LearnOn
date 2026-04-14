@@ -7,6 +7,24 @@
     <a href="#precos">Preços</a>
     <a routerLink="/login" class="btn-login">Entrar</a>
     <a routerLink="/cadastro" class="btn-nav">Começar agora</a>
+    <button
+      type="button"
+      class="theme-toggle"
+      (click)="theme.toggleTheme()"
+      [attr.aria-label]="theme.isDarkMode() ? 'Ativar modo claro' : 'Ativar modo escuro'"
+      [attr.aria-pressed]="theme.isDarkMode()"
+    >
+      @if (theme.isDarkMode()) {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79Z" />
+        </svg>
+      } @else {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" />
+        </svg>
+      }
+    </button>
   </div>
 </nav>
 
