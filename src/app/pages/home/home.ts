@@ -14,4 +14,8 @@ import { ThemeService } from '../../services/theme';
 })
 export class Home {
   constructor(public theme: ThemeService) {}
+
+  toggleTheme() {
+    this.theme.toggleTheme();
+  }
 }

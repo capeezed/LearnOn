@@ -11,27 +11,55 @@ import { AuthService } from '../../services/auth';
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
 
     :host {
-      --bg:     #f0ebe3;
-      --white:  #ffffff;
-      --navy:   #1c2b3a;
-      --accent: #d64e2a;
-      --muted:  #7a7060;
-      --border: #d8d0c5;
-      display: flex;
-      min-height: 100vh;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg);
-      font-family: 'DM Sans', sans-serif;
-    }
+    --bg: #f6efe5;
+    --white: #fffaf4;
+
+    --navy: #4937a6;
+    --accent: #f97316;
+
+    --muted: #7c7297;
+    --border: #e8d9cb;
+
+    --card-bg: #ffffff;
+    --input-bg: #f7f1ea;
+
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--bg);
+
+    font-family: 'DM Sans', sans-serif;
+
+    transition:
+      background .25s ease,
+      color .25s ease;
+  }
+
+  :root[data-theme='dark'] app-login {
+    --bg: #050816;
+    --white: #12172a;
+
+    --navy: #f3f4f6;
+    --accent: #ff6a1a;
+
+    --muted: #9ca3af;
+    --border: #2a3147;
+
+    --card-bg: #171d33;
+    --input-bg: #0f1222;
+  } 
+
+  :root[data-theme='dark'] .login-card { background: radial-gradient(circle at top right,rgba(249,115,22,.12), transparent 30%),#171d33; }
 
     .login-card {
-      background: var(--white);
+      background: var(--card-bg);
       border-radius: 28px;
       padding: 52px 48px;
       width: 100%;
       max-width: 440px;
-      box-shadow: 0 24px 80px rgba(28,43,58,.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,.18);
       border: 1px solid var(--border);
     }
 
@@ -129,7 +157,7 @@ import { AuthService } from '../../services/auth';
       font-size: 15px;
       font-family: 'DM Sans', sans-serif;
       color: var(--navy);
-      background: var(--bg);
+      background: var(--input-bg);
       outline: none;
       transition: border-color .2s, box-shadow .2s;
       margin-bottom: 20px;
