@@ -1,18 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #f0ebe3;
-  --bg2: #e8e1d8;
+  /* FUNDOS */
+  --bg: #f4ecdf;
+  --bg2: #fffaf4;
+  --body-bg: #f6f1e8;
+
+  /* textos */
   --white: #ffffff;
-  --navy: #1c2b3a;
-  --accent: #d64e2a;
-  --accent2: #e8825a;
-  --teal: #2a7a6e;
-  --gold: #c8963e;
-  --muted: #7a7060;
-  --border: #d8d0c5;
-  --body-bg: #f4f6fb;
-  --surface-overlay: rgba(240, 235, 227, 0.94);
+  --navy: #46359d;
+  --muted: #7e7498;
+
+  /* principais */
+  --accent: #f97316;
+  --accent2: #ff8a3d;
+
+  /* SECUNDÁRIAS */
+  --teal: #6d5bd0;
+  --gold: #f4b400;
+
+  /* BORDAS */
+  --border: #e8dcd0;
+
+  /* CARDS */
+  --card: #fffdf9;
+
+  /* BOTÃO ROXO */
+  --primary: #4b36a8;
+  --primary-hover: #5d47c0;
+  
+  --surface-overlay: rgba(255, 250, 244, 0.92);
 }
 
 * {
@@ -26,20 +43,30 @@ body {
   margin: 0;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
-
+ 
+/* tema escuro */
 :root[data-theme='dark'] {
-  --bg: #0b1220;
-  --bg2: #111827;
-  --white: #0f172a;
-  --navy: #e5e7eb;
-  --accent: #ff6a3d;
-  --accent2: #ff8a65;
-  --teal: #34d399;
-  --gold: #fbbf24;
+  --bg: #080c16;
+  --bg2: #0f1222;
+  --body-bg: #050816;
+  --surface-overlay: rgba(15, 18, 34, 0.92);
+
+  --white: #eceef9;
+  --navy: #eceef9;
   --muted: #9ca3af;
-  --border: #1f2937;
-  --body-bg: #020617;
-  --surface-overlay: rgba(11, 18, 32, 0.92);
+
+  --accent: #de6618;
+  --accent2: #ff7a1a;
+
+  --teal: #6366f1;
+  --gold: #f4b400;
+
+  --border: #2a2f45;
+
+  --card: #12172a;
+
+  --primary: #5b4bdb;
+  --primary-hover: #7367f0;
 }
 
 .page-container {
