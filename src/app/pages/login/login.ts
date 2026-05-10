@@ -11,56 +11,75 @@ import { AuthService } from '../../services/auth';
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
 
     :host {
-    --bg: #f6efe5;
-    --white: #fffaf4;
+      --bg: #f6efe5;
+      --white: #fffaf4;
 
-    --navy: #4937a6;
-    --accent: #f97316;
+      --navy: #4937a6;
+      --muted: #7c7297;
 
-    --muted: #7c7297;
-    --border: #e8d9cb;
+      --accent: #f97316;
+      --accent2: #ff8f4d;
 
-    --card-bg: #ffffff;
-    --input-bg: #f7f1ea;
+      --border: #e8d9cb;
 
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+      --input-bg: #f3eadf;
 
-    background: var(--bg);
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
 
-    font-family: 'DM Sans', sans-serif;
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(249,115,22,.08),
+          transparent 25%
+        ),
+        var(--bg);
 
-    transition:
-      background .25s ease,
-      color .25s ease;
-  }
+      font-family: 'DM Sans', sans-serif;
 
-  :root[data-theme='dark'] app-login {
-    --bg: #050816;
-    --white: #12172a;
+      padding: 24px;
+    }
 
-    --navy: #f3f4f6;
-    --accent: #ff6a1a;
+    :host-context([data-theme='dark']) {
+      --bg: #050816;
+      --white: #12172a;
 
-    --muted: #9ca3af;
-    --border: #2a3147;
+      --navy: #f3f4f6;
+      --muted: #9ca3af;
 
-    --card-bg: #171d33;
-    --input-bg: #0f1222;
-  } 
+      --accent: #ff6a1a;
+      --accent2: #ff944d;
 
-  :root[data-theme='dark'] .login-card { background: radial-gradient(circle at top right,rgba(249,115,22,.12), transparent 30%),#171d33; }
+      --border: #2a3147;
+
+      --input-bg: #0f172a;
+    }
+
+    :host-context([data-theme='dark']) .login-card {
+      box-shadow:
+        0 20px 60px rgba(2,6,23,.45);
+    }
+
+    :host-context([data-theme='dark']) .btn-google img {
+      filter: brightness(.95);
+    }
 
     .login-card {
-      background: var(--card-bg);
-      border-radius: 28px;
+      background: var(--white);
+      border-radius: 32px;
       padding: 52px 48px;
       width: 100%;
       max-width: 440px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.18);
+
       border: 1px solid var(--border);
+
+      box-shadow:
+        0 20px 60px rgba(73,55,166,.10),
+        0 4px 20px rgba(0,0,0,.05);
+
+      backdrop-filter: blur(14px);
     }
 
     .back-link {
@@ -113,8 +132,10 @@ import { AuthService } from '../../services/auth';
       cursor: pointer;
     }
     .btn-google:hover {
-      border-color: var(--navy);
-      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      border-color: var(--accent);
+
+      box-shadow:
+        0 10px 24px rgba(73,55,166,.08);
     }
     .btn-google img {
       width: 18px;
@@ -164,28 +185,51 @@ import { AuthService } from '../../services/auth';
       box-sizing: border-box;
     }
     .field-input:focus {
-      border-color: var(--navy);
-      box-shadow: 0 0 0 3px rgba(28,43,58,.07);
+      border-color: var(--accent);
+
+      box-shadow:
+        0 0 0 4px rgba(249,115,22,.12);
+
       background: var(--white);
     }
 
     .btn-entrar {
       width: 100%;
       padding: 15px;
-      background: var(--navy);
+
+      background:
+        linear-gradient(
+          135deg,
+          #4b36a8,
+          #5b45c7
+        );
+
       color: white;
       border: none;
       border-radius: 50px;
+
       font-size: 16px;
       font-weight: 700;
+
       font-family: 'DM Sans', sans-serif;
+
       cursor: pointer;
-      transition: background .2s, transform .2s;
+
+      transition:
+        transform .2s,
+        box-shadow .2s,
+        opacity .2s;
+
       margin-top: 8px;
     }
+
     .btn-entrar:hover {
-      background: var(--accent);
       transform: translateY(-2px);
+
+      box-shadow:
+        0 12px 28px rgba(91,69,199,.35);
+
+      opacity: .96;
     }
 
     .erro-box {

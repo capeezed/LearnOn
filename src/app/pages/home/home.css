@@ -23,7 +23,7 @@
   font-family: 'DM Sans', sans-serif;
 }
 
-:root[data-theme='dark'] {
+:host.dark-mode {
   --bg: #050816;
   --bg2: #0f1222;
   --white: #12172a;
@@ -53,7 +53,7 @@ h1,h2,h3,h4 { font-family: 'Nunito', sans-serif; }
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-:root[data-theme='dark'] .ln-nav {
+:host.dark-mode .ln-nav {
   background: rgba(11,18,32,.92);
 }
 .ln-logo { font-family:'Nunito',sans-serif; font-size:22px; font-weight:800; color:var(--navy); text-decoration:none; }
@@ -155,13 +155,13 @@ section { padding:100px 24px; }
 .how-bg { background:var(--white); }
 .steps-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; margin-top:56px; }
 .step-card { background:var(--bg); border-radius:20px; padding:36px 28px; border:1px solid var(--border); transition:transform .3s, box-shadow .3s; }
-.step-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(28,43,58,.08); }
+.step-card:hover { transform:translateY(-6px);  box-shadow: 0 20px 60px rgba(73,55,166,.12); }
 .step-number { font-family:'Nunito',sans-serif; font-size:72px; font-weight:900; color:var(--border); line-height:1; margin-bottom:8px; }
 .step-icon-wrap { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:18px; }
-.si-1 { background:rgba(28,43,58,.07); }
-.si-2 { background:rgba(214,78,42,.08); }
-.si-3 { background:rgba(42,122,110,.08); }
-.si-4 { background:rgba(200,150,62,.1); }
+.si-1 { background: rgba(75,54,168,.08); }
+.si-2 { background: rgba(249,115,22,.10); }
+.si-3 { background: rgba(107,92,255,.10); }
+.si-4 { background: rgba(244,180,0,.12); }
 .step-card h3 { font-size:18px; font-weight:800; color:var(--navy); margin-bottom:10px; }
 .step-card p  { font-size:14px; color:var(--muted); line-height:1.7; }
 
@@ -269,79 +269,30 @@ footer p { font-size:14px; color:var(--muted); }
     0 20px 60px rgba(73,55,166,.10);
 }
 
-:root[data-theme='dark'] .stat-item,
-:root[data-theme='dark'] .feat-item,
-:root[data-theme='dark'] .price-card,
-:root[data-theme='dark'] footer {
-  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.35);
-}
-
-:root[data-theme='dark'] .price-card:not(.featured) .price-tier,
-:root[data-theme='dark'] .price-card:not(.featured) .price-val small,
-:root[data-theme='dark'] .price-card:not(.featured) .price-desc {
-  color: rgba(226, 232, 240, 0.82);
-}
-
-:root[data-theme='dark'] .price-card:not(.featured) .price-list li {
-  color: #f8fafc;
-}
-
-:root[data-theme='dark'] .visual-card {
+:host.dark-mode .visual-card,
+:host.dark-mode .price-card,
+:host.dark-mode .feat-item {
   background:
     radial-gradient(
       circle at top right,
-      rgba(249,115,22,.18),
-      transparent 30%
+      rgba(124,131,255,.08),
+      transparent 35%
     ),
-    linear-gradient(
-      135deg,
-      #24145c,
-      #34208a
-    );
-
-  border: 1px solid rgba(255,255,255,.08);
-
-  box-shadow:
-    0 20px 60px rgba(36,20,92,.35);
+    var(--white);
 }
 
-:root[data-theme='dark'] .visual-step {
-  border-bottom: 1px solid rgba(255,255,255,.08);
+:host.dark-mode .price-card:not(.featured) .price-tier,
+:host.dark-mode .price-card:not(.featured) .price-val small,
+:host.dark-mode .price-card:not(.featured) .price-desc {
+  color: rgba(226, 232, 240, 0.82);
 }
 
-:root[data-theme='dark'] .vstep-text strong {
-  color: white;
-}
-
-:root[data-theme='dark'] .vstep-text span {
-  color: rgba(255,255,255,.65);
-}
-
-:root[data-theme='dark'] .vstep-num {
-  background: rgba(255,255,255,.12);
-  backdrop-filter: blur(10px);
-}
-
-:root[data-theme='dark'] .vstep-num.a {
-  background: #f97316;
-}
-
-:root[data-theme='dark'] .vstep-num.t {
-  background: #7c83ff;
-}
-
-:root[data-theme='dark'] .vstep-num.g {
-  background: #f4b400;
-}
-
-:root[data-theme='dark'] .visual-badge {
-  background: #f97316;
-  color: white;
-  box-shadow: 0 8px 20px rgba(249,115,22,.35);
+:host.dark-mode .price-card:not(.featured) .price-list li {
+  color: #f8fafc;
 }
 
 /* SCROLL REVEAL */
-.reveal { opacity:1; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
 
 /* RESPONSIVE */
