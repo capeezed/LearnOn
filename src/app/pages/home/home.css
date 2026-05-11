@@ -133,7 +133,7 @@ h1,h2,h3,h4 { font-family: 'Nunito', sans-serif; }
 .vstep-text span   { font-size:13px; color:var(--muted); }
 
 /* STATS */
-.stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; max-width:1200px; margin:0 auto; padding:0 60px; }
+.stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; max-width:1200px; margin:0 auto 28px; padding:0 60px; }
 .stat-item { background:var(--white); padding:32px 28px; text-align:center; }
 .stat-item:first-child { border-radius:16px 0 0 16px; }
 .stat-item:last-child  { border-radius:0 16px 16px 0; }

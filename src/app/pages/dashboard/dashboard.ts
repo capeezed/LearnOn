@@ -10,20 +10,57 @@ import { PedidoService } from '../../services/pedido';
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
 
     :host {
-      --bg:     #f0ebe3;
-      --bg2:    #e8e1d8;
-      --white:  #ffffff;
-      --navy:   #1c2b3a;
-      --accent: #d64e2a;
-      --teal:   #2a7a6e;
-      --gold:   #c8963e;
-      --muted:  #7a7060;
-      --border: #d8d0c5;
-      display: block;
-      min-height: 100vh;
-      background: var(--bg);
-      font-family: 'DM Sans', sans-serif;
-    }
+    --bg: #f6f7fb;
+    --bg2: #eef1f8;
+
+    --white: #ffffff;
+    --strong-surface: #ffffff;
+
+    --navy: #111827;
+    --muted: #6b7280;
+
+    --accent: #ff6a1a;
+    --accent2: #ff8f4d;
+
+    --teal: #7c83ff;
+    --gold: #ffc94d;
+
+    --border: #dbe2f0;
+
+    display: block;
+    min-height: 100vh;
+
+    background:
+      radial-gradient(circle at top left, rgba(124,131,255,.10), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(255,106,26,.08), transparent 30%),
+      var(--bg);
+
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  :host.dark-mode {
+    --bg: #050816;
+    --bg2: #0f1222;
+
+    --white: #12172a;
+    --strong-surface: #171d33;
+
+    --navy: #f3f4f6;
+    --muted: #9ca3af;
+
+    --accent: #ff6a1a;
+    --accent2: #ff8f4d;
+
+    --teal: #7c83ff;
+    --gold: #ffc94d;
+
+    --border: #2a3147;
+
+    background:
+      radial-gradient(circle at top left, rgba(124,131,255,.16), transparent 32%),
+      radial-gradient(circle at bottom right, rgba(255,106,26,.12), transparent 28%),
+      var(--bg);
+  }
 
     .dash-body {
       max-width: 1100px;
@@ -32,8 +69,10 @@ import { PedidoService } from '../../services/pedido';
     }
 
     .hero-banner {
-      background: var(--navy);
+      linear-gradient(135deg, #171d33 0%, #232b4d 100%);
       border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,.18);
       padding: 44px 48px;
       display: flex;
       align-items: center;
@@ -57,15 +96,21 @@ import { PedidoService } from '../../services/pedido';
     .hero-banner p { font-size: 15px; color: rgba(255,255,255,.55); margin-bottom: 24px; }
     .btn-pedido {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent); color: white;
+      background: linear-gradient(135deg, var(--teal), #9aa0ff); color: white;
       padding: 13px 28px; border-radius: 50px;
       font-size: 15px; font-weight: 700;
       text-decoration: none; border: none; cursor: pointer;
       font-family: 'DM Sans', sans-serif;
       transition: background .2s, transform .2s;
     }
-    .btn-pedido:hover { background: #c04020; transform: translateY(-2px); }
+    .btn-pedido:hover { background: var(--accent-hover); transform: translateY(-2px); filter: brightness(1.05);}
     .hero-emoji { font-size: 72px; line-height: 1; flex-shrink: 0; }
+
+    .quick-card,
+    .pedidos-card {
+      background: var(--strong-surface);
+      border: 1px solid var(--border);
+    }
 
     .quick-grid {
       display: grid;
@@ -74,7 +119,7 @@ import { PedidoService } from '../../services/pedido';
       margin-bottom: 40px;
     }
     .quick-card {
-      background: var(--white);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 28px 24px;
@@ -84,13 +129,13 @@ import { PedidoService } from '../../services/pedido';
     }
     .quick-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(28,43,58,.08);
+      box-shadow: var(--shadow);
       border-color: var(--navy);
     }
     .quick-icon {
       font-size: 32px; margin-bottom: 14px;
       width: 56px; height: 56px; border-radius: 14px;
-      background: var(--bg); display: flex; align-items: center; justify-content: center;
+      background: rgba(124,131,255,.10); display: flex; align-items: center; justify-content: center;
     }
     .quick-card h4 {
       font-family: 'Nunito', sans-serif;
@@ -112,6 +157,7 @@ import { PedidoService } from '../../services/pedido';
       font-size: 20px; font-weight: 900; color: var(--navy);
     }
     .btn-novo {
+      border: 1px solid var(--border);
       display: inline-flex; align-items: center; gap: 6px;
       background: transparent; color: var(--navy);
       padding: 9px 20px; border-radius: 50px;
@@ -120,10 +166,10 @@ import { PedidoService } from '../../services/pedido';
       transition: border-color .2s, background .2s;
       font-family: 'DM Sans', sans-serif;
     }
-    .btn-novo:hover { border-color: var(--navy); background: var(--white); }
+    .btn-novo:hover { border-color: var(--teal); background: rgba(124,131,255,.08); }
 
     .pedidos-card {
-      background: var(--white);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
@@ -133,37 +179,56 @@ import { PedidoService } from '../../services/pedido';
       padding: 60px 24px;
       text-align: center;
     }
-    .empty-state p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+    .empty-state p { color: var(--text-soft); font-size: 15px; margin-bottom: 20px; }
     .btn-filled {
       display: inline-block;
-      background: var(--navy); color: white;
+      background: background: linear-gradient(135deg, var(--teal), #9aa0ff); color: white;
       padding: 13px 28px; border-radius: 50px;
       font-size: 14px; font-weight: 700; text-decoration: none;
       transition: background .2s;
     }
-    .btn-filled:hover { background: var(--accent); }
+    .btn-filled:hover { background: var(--accent); transform: translateY(-2px); filter: brightness(1.05); }
 
     .pedido-row {
       display: flex; align-items: center; justify-content: space-between;
       padding: 18px 28px;
-      border-bottom: 1px solid var(--bg2);
+      border-bottom: 1px solid var(--border);
       transition: background .15s;
     }
     .pedido-row:last-child { border-bottom: none; }
-    .pedido-row:hover { background: var(--bg); }
+    .pedido-row:hover { background: rgba(255,255,255,.03); }
     .pedido-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-    .pedido-tag   { font-size: 12px; color: var(--muted); }
+    .pedido-tag   { font-size: 12px; color: var(--text-soft); }
 
     .badge {
       display: inline-flex; align-items: center; gap: 5px;
       padding: 5px 14px; border-radius: 50px;
       font-size: 12px; font-weight: 700; white-space: nowrap;
     }
-    .badge-pending     { background: rgba(200,150,62,.12); color: var(--gold); }
-    .badge-matched     { background: rgba(42,122,110,.12); color: var(--teal); }
-    .badge-production  { background: rgba(28,43,58,.1);    color: var(--navy); }
-    .badge-delivered   { background: rgba(42,122,110,.15); color: var(--teal); }
-    .badge-expired     { background: rgba(122,112,96,.1);  color: var(--muted); }
+    .badge-pending {
+      background: rgba(255,201,77,.12);
+      color: var(--gold);
+    }
+
+    .badge-matched {
+      background: rgba(124,131,255,.12);
+      color: var(--teal);
+    }
+
+    .badge-production {
+      background: rgba(255,106,26,.12);
+      color: var(--accent);
+    }
+
+    .badge-delivered {
+      background: rgba(124,131,255,.12);
+      color: var(--teal);
+    }
+
+    .badge-expired {
+      background: rgba(156,163,175,.12);
+      color: var(--muted);
+    }
 
     @media(max-width: 768px) {
       .dash-body { padding: 28px 16px; }

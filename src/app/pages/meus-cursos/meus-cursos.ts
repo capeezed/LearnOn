@@ -10,21 +10,65 @@ import { CursoService } from '../../services/curso';
   styles: [`
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
 
-    :host {
-      --bg:     #f0ebe3;
-      --bg2:    #e8e1d8;
-      --white:  #ffffff;
-      --navy:   #1c2b3a;
-      --accent: #d64e2a;
-      --teal:   #2a7a6e;
-      --gold:   #c8963e;
-      --muted:  #7a7060;
-      --border: #d8d0c5;
+      :host {
+      --bg: #f6f7fb;
+      --bg2: #eef1f8;
+
+      --white: #ffffff;
+      --strong-surface: #ffffff;
+
+      --navy: #111827;
+      --muted: #6b7280;
+
+      --accent: #ff6a1a;
+      --accent2: #ff8f4d;
+
+      --teal: #7c83ff;
+      --gold: #ffc94d;
+
+      --border: #dbe2f0;
+
       display: block;
       min-height: 100vh;
-      background: var(--bg);
-      font-family: 'DM Sans', sans-serif;
+
+      background:
+        radial-gradient(circle at top left, rgba(124,131,255,.10), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,106,26,.08), transparent 30%),
+        var(--bg);
     }
+
+    :host.dark-mode {
+      --bg: #050816;
+      --bg2: #0f1222;
+
+      --white: #12172a;
+      --strong-surface: #171d33;
+
+      --navy: #f3f4f6;
+      --muted: #9ca3af;
+
+      --accent: #ff6a1a;
+      --accent2: #ff8f4d;
+
+      --teal: #7c83ff;
+      --gold: #ffc94d;
+
+      --border: #2a3147;
+
+      background:
+        radial-gradient(circle at top left, rgba(124,131,255,.16), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255,106,26,.12), transparent 28%),
+        var(--bg);
+    }
+    .curso-card,
+    .empty-state,
+    .summary-item,
+    .skeleton-card { background: var(--strong-surface); border: 1px solid var(--border); color: var(--navy);}
+
+    :host-context(.dark-theme) .curso-card,
+    :host-context(.dark-theme) .summary-item,
+    :host-context(.dark-theme) .empty-state,
+    :host-context(.dark-theme) .skeleton-card { backdrop-filter: blur(10px); }
 
     .page-wrap {
       max-width: 1100px;
@@ -41,7 +85,7 @@ import { CursoService } from '../../services/curso';
     .page-title {
       font-family: 'Nunito', sans-serif;
       font-size: 32px; font-weight: 900;
-      color: var(--navy); margin-bottom: 8px;
+      color: var(--text); margin-bottom: 8px;
     }
     .page-sub { font-size: 15px; color: var(--muted); margin-bottom: 40px; }
 
@@ -52,7 +96,8 @@ import { CursoService } from '../../services/curso';
       margin-bottom: 40px;
     }
     .summary-item {
-      background: var(--white);
+      border: 1px solid var(--border);
+      background: var(--surface);
       padding: 24px 28px;
       text-align: center;
     }
@@ -60,7 +105,7 @@ import { CursoService } from '../../services/curso';
     .summary-item:last-child  { border-radius: 0 16px 16px 0; }
     .summary-num {
       font-family: 'Nunito', sans-serif;
-      font-size: 36px; font-weight: 900; color: var(--navy); line-height: 1;
+      font-size: 36px; font-weight: 900; color: var(--text); line-height: 1;
     }
     .summary-num em { color: var(--accent); font-style: normal; }
     .summary-desc { font-size: 13px; color: var(--muted); margin-top: 4px; }
@@ -72,7 +117,7 @@ import { CursoService } from '../../services/curso';
     }
 
     .curso-card {
-      background: var(--white);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 24px;
       overflow: hidden;
@@ -81,8 +126,9 @@ import { CursoService } from '../../services/curso';
       text-decoration: none;
     }
     .curso-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 60px rgba(28,43,58,.1);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 70px rgba(15,23,42,.16);
+      border-color: rgba(255,107,44,.25);
     }
 
     .card-banner { height: 10px; background: var(--border); }
@@ -99,13 +145,13 @@ import { CursoService } from '../../services/curso';
       letter-spacing: .5px; text-transform: uppercase;
       margin-bottom: 14px;
     }
-    .tag-live     { background: rgba(42,122,110,.1);  color: var(--teal); }
-    .tag-recorded { background: rgba(28,43,58,.08);   color: var(--navy); }
+    .tag-live     { background: rgba(255,106,26,.12);  color: var(--accent); }
+    .tag-recorded { background: rgba(124,131,255,.12); color: var(--teal); }
 
     .card-title {
       font-family: 'Nunito', sans-serif;
       font-size: 18px; font-weight: 800;
-      color: var(--navy); margin-bottom: 8px; line-height: 1.3;
+      color: var(--text); margin-bottom: 8px; line-height: 1.3;
     }
     .card-topic { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
 
@@ -115,50 +161,52 @@ import { CursoService } from '../../services/curso';
       margin-bottom: 8px;
     }
     .progress-label { font-size: 12px; font-weight: 600; color: var(--muted); }
-    .progress-pct   { font-size: 13px; font-weight: 800; color: var(--navy); }
+    .progress-pct   { font-size: 13px; font-weight: 800; color: var(--text); }
     .progress-bar { height: 8px; background: var(--bg2); border-radius: 8px; overflow: hidden; }
     .progress-fill {
       height: 100%; border-radius: 8px;
-      background: linear-gradient(90deg, var(--navy), var(--accent));
+      background: linear-gradient(90deg, #ff6b2c 0%, #ff874d 45%, #ffb088 100%);
       transition: width .6s ease;
     }
-    .progress-fill.done { background: var(--teal); }
+    .progress-fill.done { background: linear-gradient(90deg, #7c3aed 0%, #8b5cf6 45%, #a78bfa 100%); }
 
     .card-footer-row {
       display: flex; align-items: center; justify-content: space-between;
       margin-top: auto; padding-top: 16px;
-      border-top: 1px solid var(--bg2);
+      border-top: 1px solid var(--border);
     }
     .card-date { font-size: 12px; color: var(--muted); }
 
     .btn-continuar {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--navy); color: white;
+      background: linear-gradient(135deg, var(--tear), #9aa0ff);
+      box-shadow: 0 10px 24px rgba(124,131,255,.24);
       padding: 9px 18px; border-radius: 50px;
       font-size: 13px; font-weight: 700;
       text-decoration: none; transition: background .2s;
       font-family: 'DM Sans', sans-serif;
-    }
-    .btn-continuar:hover { background: var(--accent); }
-    .btn-continuar.done  { background: var(--teal); }
+    } 
+    .btn-continuar:hover { background: var(--accent-hover); }
+    .btn-continuar.done  { linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 10px 24px rgba(255,106,26,.24);}
 
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
       padding: 80px 24px;
-      background: var(--white);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 24px;
     }
     .empty-icon  { font-size: 56px; margin-bottom: 16px; }
     .empty-title {
       font-family: 'Nunito', sans-serif;
-      font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 8px;
+      font-size: 22px; font-weight: 900; color: var(--text); margin-bottom: 8px;
     }
     .empty-sub { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
     .btn-filled {
       display: inline-block;
-      background: var(--navy); color: white;
+      background: linear-gradient(135deg, var(--tear), #9aa0ff);
+      box-shadow: 0 10px 24px rgba(124,131,255,.24);
       padding: 13px 28px; border-radius: 50px;
       font-size: 15px; font-weight: 700; text-decoration: none;
       transition: background .2s;
@@ -166,14 +214,14 @@ import { CursoService } from '../../services/curso';
     .btn-filled:hover { background: var(--accent); }
 
     .skeleton {
-      background: linear-gradient(90deg, var(--bg2) 25%, var(--border) 50%, var(--bg2) 75%);
+      background: linear-gradient(90deg, var(--bg2) 25%, rgba(124,131,255,.14) 50%, var(--bg2) 75%);
       background-size: 200% 100%;
       animation: shimmer 1.4s infinite;
       border-radius: 8px;
     }
     @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
     .skeleton-card {
-      background: var(--white); border: 1px solid var(--border);
+      background: var(--surface); border: 1px solid var(--border);
       border-radius: 24px; padding: 28px; height: 220px;
     }
 
