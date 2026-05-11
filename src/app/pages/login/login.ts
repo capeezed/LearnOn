@@ -16,6 +16,7 @@ import { AuthService } from '../../services/auth';
 
       --navy: #4937a6;
       --muted: #7c7297;
+      --teal: #6b5cff;
 
       --accent: #f97316;
       --accent2: #ff8f4d;
@@ -48,6 +49,7 @@ import { AuthService } from '../../services/auth';
 
       --navy: #f3f4f6;
       --muted: #9ca3af;
+      --teal: #7c83ff;
 
       --accent: #ff6a1a;
       --accent2: #ff944d;
@@ -261,6 +263,32 @@ import { AuthService } from '../../services/auth';
       background: var(--border);
       margin: 28px 0;
     }
+
+    .instrutor-link {
+      margin-top: 18px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .instrutor-link span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .instrutor-link a {
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .instrutor-link a:hover {
+      color: var(--accent);
+    }
   `],
   template: `
     <div class="login-card">
@@ -308,6 +336,14 @@ import { AuthService } from '../../services/auth';
       <p class="footer-link">
         Nao tem conta? <a routerLink="/cadastro">Cadastre-se</a>
       </p>
+
+      <p  class="instrutor-link">
+        <span>É instrutor?</span>
+        <a routerLink="/instrutor/login">
+          Fazer login como instrutor
+        </a>
+      </p>
+
 
     </div>
   `
