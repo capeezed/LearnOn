@@ -23,9 +23,9 @@ export class ThemeService {
 
   setTheme(mode: ThemeMode): void {
     this.mode.set(mode);
-    this.rootElement.classList.toggle('dark-theme', mode === 'dark');
+    this.rootElement.classList.toggle('dark-mode', mode === 'dark');
     this.rootElement.setAttribute('data-theme', mode);
-    this.document.body.classList.toggle('dark-theme', mode === 'dark');
+    this.document.body.classList.toggle('dark-mode', mode === 'dark');
     localStorage.setItem(this.storageKey, mode);
   }
 

@@ -22,6 +22,7 @@ import { CursoService } from '../../services/curso';
 
       --accent: #ff6a1a;
       --accent2: #ff8f4d;
+      --strong: #4937a6;
 
       --teal: #7c83ff;
       --gold: #ffc94d;
@@ -30,7 +31,7 @@ import { CursoService } from '../../services/curso';
 
       display: block;
       padding-top: 90px;
-
+      
       background:
         radial-gradient(circle at top left, rgba(124,131,255,.10), transparent 30%),
         radial-gradient(circle at bottom right, rgba(255,106,26,.08), transparent 30%),
