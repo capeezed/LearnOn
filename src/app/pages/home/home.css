@@ -22,7 +22,7 @@
   background: var(--bg);
 }
 
-:host.dark-mode {
+:host-context(body.dark-mode) {
   --bg: #050816;
   --bg2: #0f1222;
   --white: #12172a;

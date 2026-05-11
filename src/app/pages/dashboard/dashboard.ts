@@ -18,6 +18,7 @@ import { PedidoService } from '../../services/pedido';
 
     --navy: #111827;
     --muted: #6b7280;
+    --strong: #4937a6;
 
     --accent: #ff6a1a;
     --accent2: #ff8f4d;
@@ -28,7 +29,7 @@ import { PedidoService } from '../../services/pedido';
     --border: #dbe2f0;
 
     display: block;
-    min-height: 100vh;
+    padding-top: 90px;
 
     background:
       radial-gradient(circle at top left, rgba(124,131,255,.10), transparent 30%),
@@ -116,7 +117,7 @@ import { PedidoService } from '../../services/pedido';
 
     .btn-pedido {
       display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--teal), #9aa0ff); 
+      background: linear-gradient(135deg, var(--strong), #4937a6); 
       color: white;
       padding: 13px 28px; border-radius: 50px;
       font-size: 15px; font-weight: 700;
@@ -207,7 +208,7 @@ import { PedidoService } from '../../services/pedido';
     .empty-state p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
     .btn-filled {
       display: inline-block;
-      background: linear-gradient(135deg, var(--teal), #9aa0ff); 
+      background: linear-gradient(135deg, var(--strong), #4937a6);
       color: white;
       padding: 13px 28px; border-radius: 50px;
       font-size: 14px; font-weight: 700; text-decoration: none;

@@ -28,18 +28,32 @@ import { ThemeService } from '../../services/theme';
 
       --border: #e8d9cb;
 
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 48px;
-      background: rgba(240,235,227,.94);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 18px 60px;
+
+      background: rgba(255,248,241,.92);
+
       backdrop-filter: blur(12px);
+
       border-bottom: 1px solid var(--border);
+
       font-family: 'DM Sans', sans-serif;
     }
 
-    nav.dark-mode {
+    :host-context(body.dark-mode) nav {
       --bg: #050816;
       --bg2: #0f1222;
+
       --white: #12172a;
 
       --navy: #f3f4f6;
@@ -54,6 +68,8 @@ import { ThemeService } from '../../services/theme';
       --gold: #ffc94d;
 
       --border: #2a3147;
+
+      background: rgba(11,18,32,.92);
     }
 
     .brand {
@@ -141,7 +157,7 @@ import { ThemeService } from '../../services/theme';
     }
   `],
   template: `
-    <nav [class.dark-mode]="theme.isDarkMode()">
+    <nav>
       <a class="brand" routerLink="/dashboard">Learn<span>On</span></a>
 
       <div class="nav-links">

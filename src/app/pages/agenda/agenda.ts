@@ -29,7 +29,8 @@ import { CursoService } from '../../services/curso';
       --border: #dbe2f0;
 
       display: block;
-      min-height: 100vh;
+      padding-top: 90px;
+
       background:
         radial-gradient(circle at top left, rgba(124,131,255,.10), transparent 30%),
         radial-gradient(circle at bottom right, rgba(255,106,26,.08), transparent 30%),
@@ -110,7 +111,7 @@ import { CursoService } from '../../services/curso';
     }
     .cal-day:hover { background: rgba(124,131,255,.12); color: var(--navy); }
     .cal-day.today { 
-      background: linear-gradient(135deg, var(--teal), #9aa0ff); 
+      background: linear-gradient(135deg, var(--strong), #4937a6); 
       color: white; 
       font-weight: 700; }
     .cal-day.has-event::after {
