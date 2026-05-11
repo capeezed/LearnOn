@@ -29,8 +29,11 @@ import { CursoService } from '../../services/curso';
 
       --border: #dbe2f0;
 
-      display: block;
-      padding-top: 90px;
+      display: flex;
+      flex-direction: column;
+
+      min-height: 100vh;
+      width: 100%;
 
       background:
         radial-gradient(circle at top left, rgba(124,131,255,.10), transparent 30%),
@@ -72,9 +75,13 @@ import { CursoService } from '../../services/curso';
     :host-context(body.dark-mode) .skeleton-card { backdrop-filter: blur(10px); }
 
     .page-wrap {
+      flex: 1;
+      width: 100%;
+
       max-width: 1100px;
       margin: 0 auto;
       padding: 48px 24px;
+      box-sizing: border-box;
     }
 
     .page-label {
