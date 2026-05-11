@@ -12,24 +12,82 @@ import { environment } from '../../../environments/environment';
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
 
     :host {
-      --bg:     #f0ebe3;
-      --bg2:    #e8e1d8;
-      --white:  #ffffff;
-      --navy:   #1c2b3a;
-      --accent: #d64e2a;
-      --teal:   #2a7a6e;
-      --gold:   #c8963e;
-      --muted:  #7a7060;
-      --border: #d8d0c5;
-      display: block; min-height: 100vh;
-      background: var(--bg);
-      font-family: 'DM Sans', sans-serif;
+      --bg: #f5f7ff;
+      --bg2: #eef2ff;
+      --body-bg: #f3f5fc;
+
+      --card: #ffffff;
+      --surface-overlay: rgba(255,255,255,.82);
+      --navy: #111827;
+      --muted: #6b7280;
+      --white: #ffffff;
+
+      --primary: #5b4bdb;
+      --primary-hover: #6d5ef0;
+
+      --accent: #ff6b2c;
+      --accent2: #ff8f5a;
+
+      --teal: #7c83ff;
+      --gold: #f6b73c;
+
+      --border: #dbe3f0;
+
+      --hero: #161b2e;
+      --shadow:
+        0 10px 30px rgba(17,24,39,.08);
+      --shadow-hover:
+        0 18px 50px rgba(17,24,39,.14);
+
+        display: flex;
+        flex-direction: column;
+
+        min-height: 100vh;
+        width: 100%;
+
+        background:
+          radial-gradient(circle at top left, rgba(124,131,255,.10), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(255,106,26,.08), transparent 30%),
+          var(--body-bg);
+
+        font-family: 'DM Sans', sans-serif;
     }
 
-    /* NAVBAR */
+    :host-context([data-theme='dark']) { 
+      --bg: #050816;
+      --bg2: #0f1222;
+      --body-bg: #070b1b;
+
+      --card: #12172a;
+      --surface-overlay: rgba(15,18,34,.84);
+
+      --navy: #f3f4f6;
+      --muted: #9ca3af;
+      --white: #ffffff;
+
+      --primary: #7c83ff;
+      --primary-hover: #959bff;
+
+      --accent: #ff7a1a;
+      --accent2: #ff9b4a;
+
+      --teal: #7c83ff;
+      --gold: #ffc94d;
+
+      --border: #2a3147;
+
+      --hero: #0f1424;
+
+      --shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+      --shadow-hover:
+        0 18px 50px rgba(0,0,0,.5);
+    }
+
     .navbar {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(240,235,227,.92);
+      background: var(--surface-overlay);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 40px;
@@ -61,7 +119,7 @@ import { environment } from '../../../environments/environment';
 
     /* TABS */
     .tabs-bar {
-      background: var(--white);
+      background: var(--card);
       border-bottom: 1px solid var(--border);
       padding: 0 40px;
       display: flex; gap: 4px;
@@ -90,12 +148,29 @@ import { environment } from '../../../environments/environment';
     }
 
     /* ─── DASHBOARD ─── */
+
+    .stat-card,
+    .match-card,
+    .publish-card,
+    .aula-card,
+    .empty-state {
+      transition:
+      box-shadow .25s,
+      transform .25s;
+    }
+
+    .match-card:hover,
+    .aula-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
     .stats-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 16px; margin-bottom: 36px;
     }
     .stat-card {
-      background: var(--white); border: 1px solid var(--border);
+      background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 24px 20px; text-align: center;
     }
     .stat-num {
@@ -108,7 +183,12 @@ import { environment } from '../../../environments/environment';
     .stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
     .welcome-banner {
-      background: var(--navy); border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        var(--hero),
+        #1a2140
+      );
+      border-radius: 20px;
       padding: 36px 40px; margin-bottom: 28px;
       display: flex; align-items: center; justify-content: space-between;
       position: relative; overflow: hidden;
@@ -133,7 +213,7 @@ import { environment } from '../../../environments/environment';
     }
 
     .match-card {
-      background: var(--white); border: 1px solid var(--border);
+      background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 28px;
       margin-bottom: 16px;
       display: flex; gap: 24px; align-items: flex-start;
@@ -158,12 +238,24 @@ import { environment } from '../../../environments/environment';
     }
     .match-actions { display: flex; gap: 10px; align-self: center; flex-shrink: 0; }
     .btn-aceitar {
-      background: var(--teal); color: white;
+      background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--teal)
+      ); 
+      color: white;
       padding: 10px 22px; border-radius: 50px;
       font-size: 13px; font-weight: 700; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; transition: background .2s;
+      font-family: 'DM Sans', sans-serif; 
+      transition:
+      transform .2s,
+      filter .2s,
+      background .2s;
     }
-    .btn-aceitar:hover { background: #1f5e54; }
+    .btn-aceitar:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
     .btn-recusar {
       background: transparent; color: var(--muted);
       padding: 10px 22px; border-radius: 50px;
@@ -183,7 +275,7 @@ import { environment } from '../../../environments/environment';
 
     /* ─── PUBLICAR ─── */
     .publish-card {
-      background: var(--white); border: 1px solid var(--border);
+      background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 36px;
     }
     .field { margin-bottom: 20px; }
@@ -200,7 +292,7 @@ import { environment } from '../../../environments/environment';
       box-sizing: border-box;
     }
     input:focus, select:focus, textarea:focus {
-      border-color: var(--teal); background: var(--white);
+      border-color: var(--teal); background: var(--card);
     }
     textarea { resize: vertical; min-height: 100px; }
     .fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -210,7 +302,10 @@ import { environment } from '../../../environments/environment';
       font-size: 15px; font-weight: 700; border: none; cursor: pointer;
       font-family: 'DM Sans', sans-serif; transition: background .2s, transform .2s;
     }
-    .btn-publicar:hover:not(:disabled) { background: #1f5e54; transform: translateY(-2px); }
+    .btn-publicar:hover:not(:disabled) {  
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
     .btn-publicar:disabled { opacity: .6; cursor: not-allowed; }
 
     .sucesso {
@@ -228,7 +323,7 @@ import { environment } from '../../../environments/environment';
 
     /* ─── AGENDA ─── */
     .aula-card {
-      background: var(--white); border: 1px solid var(--border);
+      background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 24px 28px; margin-bottom: 16px;
       display: flex; gap: 20px; align-items: center;
     }
@@ -255,9 +350,15 @@ import { environment } from '../../../environments/environment';
       background: var(--teal); color: white;
       padding: 10px 22px; border-radius: 50px;
       font-size: 13px; font-weight: 700; text-decoration: none;
-      transition: background .2s;
+      transition:
+        transform .2s,
+        filter .2s,
+        background .2s;
     }
-    .btn-iniciar:hover { background: #1f5e54; }
+    .btn-iniciar:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
     .btn-em-breve {
       background: var(--bg); color: var(--muted);
       padding: 10px 22px; border-radius: 50px;
@@ -268,7 +369,7 @@ import { environment } from '../../../environments/environment';
     /* EMPTY */
     .empty-state {
       text-align: center; padding: 60px 24px;
-      background: var(--white); border: 1px solid var(--border);
+      background: var(--card); border: 1px solid var(--border);
       border-radius: 20px;
     }
     .empty-icon { font-size: 48px; margin-bottom: 12px; }
