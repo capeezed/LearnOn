@@ -264,21 +264,24 @@ import { AuthService } from '../../services/auth';
       margin: 28px 0;
     }
 
-    .instrutor-link {
+    .cadastro-link {
       margin-top: 18px;
-      text-align: center;
-
+      padding: 18px;
+      border-top: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
+      text-align: center;
+      background: rgba(124,131,255,.03);
+      border-radius: 18px;
     }
 
-    .instrutor-link span {
+    .cadastro-link span {
       font-size: 13px;
       color: var(--muted);
     }
 
-    .instrutor-link a {
+    .cadastro-link a {
       color: var(--teal);
       font-size: 14px;
       font-weight: 700;
@@ -286,9 +289,11 @@ import { AuthService } from '../../services/auth';
       transition: color .2s;
     }
 
-    .instrutor-link a:hover {
+    .cadastro-link a:hover {
       color: var(--accent);
     }
+
+
   `],
   template: `
     <div class="login-card">
@@ -334,15 +339,20 @@ import { AuthService } from '../../services/auth';
       <div class="divider"></div>
 
       <p class="footer-link">
-        Nao tem conta? <a routerLink="/cadastro">Cadastre-se</a>
+        Não tem conta? <a routerLink="/cadastro">Cadastre-se</a>
       </p>
 
-      <p  class="instrutor-link">
-        <span>É instrutor?</span>
+      <div class="cadastro-link">
+        <span>Quer ensinar na plataforma?</span>
+
         <a routerLink="/instrutor/login">
           Fazer login como instrutor
         </a>
-      </p>
+
+        <a routerLink="/instrutor/cadastro">
+          Criar conta de instrutor
+        </a>
+      </div>
 
 
     </div>

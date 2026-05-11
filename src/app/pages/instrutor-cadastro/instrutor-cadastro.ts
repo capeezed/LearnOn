@@ -12,18 +12,58 @@ import { environment } from '../../../environments/environment';
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
 
     :host {
-      --bg:     #f0ebe3;
-      --white:  #ffffff;
-      --navy:   #1c2b3a;
-      --accent: #d64e2a;
-      --teal:   #2a7a6e;
-      --muted:  #7a7060;
-      --border: #d8d0c5;
+      --bg: #f6efe5;
+      --bg2: #efe5d8;
+
+      --white: #fffaf4;
+      --surface: #ffffff;
+
+      --navy: #4937a6;
+      --muted: #7c7297;
+
+      --accent: #f97316;
+      --accent2: #ff944d;
+
+      --teal: #6b5cff;
+
+      --border: #e8d9cb;
+
+      --input-bg: #f3eadf;
       display: flex; min-height: 100vh;
       align-items: center; justify-content: center;
-      background: var(--bg);
+      
+      background:
+      radial-gradient(circle at top right, rgba(249,115,22,.08), transparent 25%),
+      radial-gradient(circle at bottom left, rgba(107,92,255,.08), transparent 25%),
+      var(--bg);
+
       font-family: 'DM Sans', sans-serif;
       padding: 24px;
+    }
+
+    :host-context(body.dark-mode) {
+      --bg: #050816;
+      --bg2: #0f1222;
+
+      --white: #12172a;
+      --surface: #171d33;
+
+      --navy: #f3f4f6;
+      --muted: #9ca3af;
+
+      --accent: #ff6a1a;
+      --accent2: #ff944d;
+
+      --teal: #7c83ff;
+
+      --border: #2a3147;
+
+      --input-bg: #0b1020;
+
+      background:
+        radial-gradient(circle at top right, rgba(124,131,255,.16), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(255,106,26,.12), transparent 28%),
+        linear-gradient(180deg, #050816, #070b1b);
     }
 
     .wrap {
@@ -39,19 +79,43 @@ import { environment } from '../../../environments/environment';
     .back-link:hover { color: var(--navy); }
 
     .card {
-      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 28px;
       padding: 44px 40px;
       box-shadow: 0 8px 40px rgba(28,43,58,.07);
     }
 
+    :host-context(body.dark-mode) .card::before {
+      content: '';
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(124,131,255,.10),
+          transparent 70%
+        );
+      top: -120px;
+      right: -120px;
+      pointer-events: none;
+    }
+
     .badge {
       display: inline-block;
-      background: rgba(42,122,110,.12); color: var(--teal);
-      padding: 5px 14px; border-radius: 50px;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: .5px; text-transform: uppercase;
+      background: rgba(124,131,255,.12);
+      color: var(--teal);
+      border: 1px solid rgba(124,131,255,.18);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
       margin-bottom: 16px;
     }
 
@@ -71,12 +135,17 @@ import { environment } from '../../../environments/environment';
       width: 100%; padding: 13px 16px;
       border: 1.5px solid var(--border); border-radius: 12px;
       font-size: 15px; font-family: 'DM Sans', sans-serif;
-      background: var(--bg); color: var(--navy);
+      background: var(--input-bg);
+      color: var(--navy);
       outline: none; transition: border-color .2s, background .2s;
       box-sizing: border-box;
     }
-    input:focus, textarea:focus {
-      border-color: var(--teal); background: var(--white);
+    input:focus,
+    textarea:focus {
+      border-color: var(--teal);
+      background: color-mix(in srgb, var(--input-bg) 82%, white 18%);
+      box-shadow:
+        0 0 0 4px rgba(124,131,255,.14);
     }
     textarea { resize: vertical; min-height: 90px; }
 
@@ -85,15 +154,33 @@ import { environment } from '../../../environments/environment';
     .hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
 
     .btn-cadastrar {
-      width: 100%; padding: 15px;
-      background: var(--teal); color: white;
-      border: none; border-radius: 50px;
-      font-size: 15px; font-weight: 700;
+      width: 100%;
+      padding: 15px;
+      background:
+        linear-gradient(
+          135deg,
+          #4b36a8,
+          #5b45c7
+        );
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
       font-family: 'DM Sans', sans-serif;
-      cursor: pointer; margin-top: 8px;
-      transition: background .2s, transform .2s;
+      cursor: pointer;
+      margin-top: 8px;
+      transition:
+        transform .2s,
+        box-shadow .2s,
+        opacity .2s;
     }
-    .btn-cadastrar:hover:not(:disabled) { background: #1f5e54; transform: translateY(-2px); }
+    .btn-cadastrar:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow:
+        0 14px 32px rgba(91,69,199,.35);
+      opacity: .96;
+    }
     .btn-cadastrar:disabled { opacity: .6; cursor: not-allowed; }
 
     .sucesso {
