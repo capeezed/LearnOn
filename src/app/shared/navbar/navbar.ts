@@ -11,12 +11,23 @@ import { ThemeService } from '../../services/theme';
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
 
     nav {
-      --bg: #f0ebe3;
-      --white: #ffffff;
-      --navy: #1c2b3a;
-      --accent: #d64e2a;
-      --muted: #7a7060;
-      --border: #d8d0c5;
+      --bg: #f6efe5;
+      --bg2: #efe5d8;
+      --white: #fffaf4;
+
+      --navy: #4937a6;
+      --muted: #7c7297;
+
+      --strong-surface: #4b36a8;
+
+      --accent: #f97316;
+      --accent2: #ff944d;
+
+      --teal: #6b5cff;
+      --gold: #f4b400;
+
+      --border: #e8d9cb;
+
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 48px;
@@ -27,13 +38,22 @@ import { ThemeService } from '../../services/theme';
     }
 
     nav.dark-mode {
-      --bg: #0b1220;
-      --white: #0f172a;
-      --navy: #e5e7eb;
-      --accent: #ff6a3d;
+      --bg: #050816;
+      --bg2: #0f1222;
+      --white: #12172a;
+
+      --navy: #f3f4f6;
       --muted: #9ca3af;
-      --border: #1f2937;
-      background: rgba(11,18,32,.92);
+
+      --strong-surface: #171d33;
+
+      --accent: #ff6a1a;
+      --accent2: #ff8f4d;
+
+      --teal: #7c83ff;
+      --gold: #ffc94d;
+
+      --border: #2a3147;
     }
 
     .brand {
@@ -44,8 +64,22 @@ import { ThemeService } from '../../services/theme';
     .brand span { color: var(--accent); }
 
     .nav-links {
-      display: flex; align-items: center; gap: 8px;
+      display: flex; 
+      align-items: center; 
+      gap: 8px;
     }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 50px;
+      transition: color .2s, background .2s;
+    }
+
+    .nav-link:hover { color: var(--navy); }
+    .nav-link.active { color: var(--navy); font-weight: 600; }
 
     .theme-toggle {
       display: inline-flex;
@@ -80,27 +114,16 @@ import { ThemeService } from '../../services/theme';
       stroke: none;
     }
 
-    .nav-link {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px; font-weight: 500;
-      padding: 8px 14px;
-      border-radius: 50px;
-      transition: color .2s, background .2s;
-    }
-    .nav-link:hover { color: var(--navy); background: var(--bg); }
-    .nav-link.active { color: var(--navy); font-weight: 600; }
-
     .btn-pedir {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--accent); color: white;
+      background:var(--strong-surface); color: white !important;
       padding: 9px 20px; border-radius: 50px;
       font-size: 14px; font-weight: 700;
       text-decoration: none;
       transition: background .2s, transform .2s;
       font-family: 'DM Sans', sans-serif;
     }
-    .btn-pedir:hover { background: #c04020; transform: translateY(-1px); }
+    .btn-pedir:hover {  background:var(--accent) !important; transform: translateY(-1px); }
 
     .btn-sair {
       background: transparent; color: var(--muted);

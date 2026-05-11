@@ -38,7 +38,7 @@ import { PedidoService } from '../../services/pedido';
     font-family: 'DM Sans', sans-serif;
   }
 
-  :host.dark-mode {
+  :host-context(body.dark-mode) {
     --bg: #050816;
     --bg2: #0f1222;
 
@@ -68,8 +68,11 @@ import { PedidoService } from '../../services/pedido';
       padding: 48px 24px;
     }
 
+    :host-context(body.dark-mode) .hero-banner {
+      background: rgba(11,18,32,.92);
+    }
     .hero-banner {
-      linear-gradient(135deg, #171d33 0%, #232b4d 100%);
+      background: rgba(255,248,241,.92);
       border-radius: 24px;
       border: 1px solid var(--border);
       box-shadow: 0 24px 60px rgba(0,0,0,.18);
@@ -91,19 +94,41 @@ import { PedidoService } from '../../services/pedido';
     }
     .hero-banner h2 {
       font-family: 'Nunito', sans-serif;
-      font-size: 26px; font-weight: 900; color: white; margin-bottom: 8px;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
-    .hero-banner p { font-size: 15px; color: rgba(255,255,255,.55); margin-bottom: 24px; }
+
+    .hero-banner p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    :host-context(body.dark-mode) .hero-banner h2 {
+      color: white;
+    }
+
+    :host-context(body.dark-mode) .hero-banner p {
+      color: rgba(255,255,255,.65);
+    }
+
     .btn-pedido {
       display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--teal), #9aa0ff); color: white;
+      background: linear-gradient(135deg, var(--teal), #9aa0ff); 
+      color: white;
       padding: 13px 28px; border-radius: 50px;
       font-size: 15px; font-weight: 700;
       text-decoration: none; border: none; cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      transition: background .2s, transform .2s;
+      transition: background .2s, transform .2s, filter .2s;
     }
-    .btn-pedido:hover { background: var(--accent-hover); transform: translateY(-2px); filter: brightness(1.05);}
+    
+    .btn-pedido:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
     .hero-emoji { font-size: 72px; line-height: 1; flex-shrink: 0; }
 
     .quick-card,
@@ -119,7 +144,7 @@ import { PedidoService } from '../../services/pedido';
       margin-bottom: 40px;
     }
     .quick-card {
-      background: var(--surface);
+      background: var(--strong-surface);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 28px 24px;
@@ -129,7 +154,7 @@ import { PedidoService } from '../../services/pedido';
     }
     .quick-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow);
+      box-shadow: 0 18px 40px rgba(0,0,0,.12);
       border-color: var(--navy);
     }
     .quick-icon {
@@ -169,7 +194,7 @@ import { PedidoService } from '../../services/pedido';
     .btn-novo:hover { border-color: var(--teal); background: rgba(124,131,255,.08); }
 
     .pedidos-card {
-      background: var(--surface);
+      background: var(--strong-surface);
       border: 1px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
@@ -179,10 +204,11 @@ import { PedidoService } from '../../services/pedido';
       padding: 60px 24px;
       text-align: center;
     }
-    .empty-state p { color: var(--text-soft); font-size: 15px; margin-bottom: 20px; }
+    .empty-state p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
     .btn-filled {
       display: inline-block;
-      background: background: linear-gradient(135deg, var(--teal), #9aa0ff); color: white;
+      background: linear-gradient(135deg, var(--teal), #9aa0ff); 
+      color: white;
       padding: 13px 28px; border-radius: 50px;
       font-size: 14px; font-weight: 700; text-decoration: none;
       transition: background .2s;
@@ -196,9 +222,9 @@ import { PedidoService } from '../../services/pedido';
       transition: background .15s;
     }
     .pedido-row:last-child { border-bottom: none; }
-    .pedido-row:hover { background: rgba(255,255,255,.03); }
+    .pedido-row:hover { background: rgba(124,131,255,.06); }
     .pedido-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-    .pedido-tag   { font-size: 12px; color: var(--text-soft); }
+    .pedido-tag   { font-size: 12px; color: var(--muted); }
 
     .badge {
       display: inline-flex; align-items: center; gap: 5px;

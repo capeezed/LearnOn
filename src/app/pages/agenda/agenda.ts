@@ -109,7 +109,10 @@ import { CursoService } from '../../services/curso';
       transition: background .15s, color .15s; position: relative;
     }
     .cal-day:hover { background: rgba(124,131,255,.12); color: var(--navy); }
-    .cal-day.today { background: linear-gradient(135deg, var(--teal), #9aa0ff); color: white; font-weight: 700; }
+    .cal-day.today { 
+      background: linear-gradient(135deg, var(--teal), #9aa0ff); 
+      color: white; 
+      font-weight: 700; }
     .cal-day.has-event::after {
       content: ''; position: absolute; bottom: 3px;
       width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
@@ -130,8 +133,7 @@ import { CursoService } from '../../services/curso';
     }
     .aula-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(28,43,58,.08);
-      border-color: 0 14px 40px rgba(124,131,255,.10);
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
       border-color: var(--teal);
     }
 
@@ -166,7 +168,9 @@ import { CursoService } from '../../services/curso';
     .aula-action { flex-shrink: 0; align-self: center; }
     .btn-entrar {
       display: inline-flex; align-items: center; gap: 6px;
-      background: linear-gradient(135deg, var(--teal), #9aa0ff; color: white; box-shadow: 0 10px 24px rgba(124,131,255,.25));
+      background: linear-gradient(135deg, var(--teal), #9aa0ff); 
+      color: white; 
+      box-shadow: 0 10px 24px rgba(124,131,255,.25);
       padding: 10px 20px; border-radius: 50px;
       font-size: 13px; font-weight: 700;
       text-decoration: none; border: none; cursor: pointer;
@@ -176,6 +180,7 @@ import { CursoService } from '../../services/curso';
     .btn-entrar:hover {
       transform: translateY(-2px);
       filter: brightness(1.05);
+      transition: background .2s, transform .2s, filter .2s, box-shadow .2s; 
     }
     .btn-aguardar {
       display: inline-block; padding: 10px 20px; border-radius: 50px;
